@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الجَمْع – معهد الأمين</title>
+<link rel="icon" href="https://res.cloudinary.com/difo1j3ol/image/upload/v1778521078/%D8%A7%D9%84%D9%84%D9%88%D8%BA%D9%88_anabeh.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFFDF8; --sand:#F6EFE0; --gold:#C8970A; --gold-soft:#E8C86A;
+  --teal:#4DB8B3; --teal-deep:#2F8A86; --ink:#2B2118; --ink-soft:#6B5C4A;
+  --line:#E9DCC0; --green:#3F9D5A; --red:#C0483C;
+  --male:#3D7EBF; --male-bg:#EAF2FB; --fem:#C9558E; --fem-bg:#FBEDF4;
+  --shadow:0 6px 20px rgba(43,33,24,.10); --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--ink);
+  line-height:1.75;min-height:100vh;-webkit-tap-highlight-color:transparent}
+
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,253,248,.96);
+  backdrop-filter:blur(8px);border-bottom:2px solid var(--line);
+  padding:8px 8px;display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.navbtn{font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:700;
+  background:transparent;color:var(--ink-soft);border:2px solid transparent;
+  border-radius:999px;padding:6px 12px;cursor:pointer;transition:all .2s}
+.navbtn:hover{background:var(--sand);color:var(--ink)}
+.navbtn.active{background:var(--gold);color:#fff;box-shadow:var(--shadow)}
+.navbtn:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+.screen{display:none;max-width:800px;margin:0 auto;padding:24px 18px 96px}
+.screen.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.logo-wrap{display:flex;justify-content:flex-start;margin-bottom:14px}
+.logo{height:84px;width:auto;max-width:60%;object-fit:contain}
+.title{font-family:'Amiri',serif;font-weight:700;
+  font-size:clamp(2rem,7.5vw,3.1rem);text-align:center;line-height:1.35}
+.subtitle{text-align:center;font-size:1rem;font-weight:700;color:var(--ink-soft);margin-top:2px}
+.title-rule{width:120px;height:4px;margin:14px auto 26px;border-radius:99px;
+  background:linear-gradient(90deg,var(--teal),var(--gold))}
+
+.lesson-list{display:flex;flex-direction:column;gap:11px}
+.lesson-card{display:flex;align-items:center;gap:14px;text-align:right;width:100%;
+  background:#fff;border:2px solid var(--line);border-radius:var(--radius);
+  padding:15px 17px;cursor:pointer;font-family:'Tajawal',sans-serif;
+  transition:transform .18s,border-color .18s,box-shadow .18s}
+.lesson-card:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:var(--shadow)}
+.lesson-card:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.lesson-card .ic{font-size:1.8rem;flex-shrink:0}
+.lesson-card .tx b{display:block;font-size:1.04rem;font-weight:800}
+.lesson-card .tx small{display:block;color:var(--ink-soft);font-size:.86rem}
+.lesson-card .tx em{display:block;color:var(--teal);font-size:.8rem;font-style:normal;
+  font-weight:700;direction:ltr;text-align:right}
+
+/* ===== القواعد ===== */
+.rule{background:#fff;border:2px solid var(--line);border-radius:var(--radius);
+  padding:20px;margin-bottom:16px;box-shadow:var(--shadow)}
+.rule h3{font-family:'Tajawal',sans-serif;font-size:.86rem;font-weight:800;
+  color:var(--gold);letter-spacing:.5px;margin-bottom:4px}
+.rule h3 .de{color:var(--teal-deep);font-weight:700;direction:ltr;display:inline-block}
+.rule .def{font-family:'Amiri',serif;font-size:clamp(1.3rem,5vw,1.75rem);
+  font-weight:700;line-height:2;text-align:center;margin-top:8px}
+.rule .def-de{text-align:center;direction:ltr;font-size:.95rem;font-weight:700;
+  color:var(--teal-deep);margin-top:-4px}
+.scale{display:flex;justify-content:center;gap:10px;margin-top:16px;flex-wrap:wrap}
+.step{flex:1;min-width:92px;background:var(--sand);border-radius:16px;padding:12px 8px;text-align:center}
+.step.now{background:var(--gold);color:#fff}
+.step .e{font-size:1.5rem;display:block;line-height:1.3}
+.step .n{font-family:'Amiri',serif;font-size:1.25rem;font-weight:700}
+.step .d{display:block;font-size:.76rem;font-weight:700;opacity:.8;direction:ltr}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.gender{border:3px solid var(--male);border-radius:18px;overflow:hidden;background:#fff}
+.gender.f{border-color:var(--fem)}
+.gender h4{background:var(--male);color:#fff;text-align:center;padding:8px 6px;
+  font-family:'Tajawal',sans-serif;font-size:.98rem;font-weight:800;line-height:1.4}
+.gender h4 span{display:block;font-size:.74rem;font-weight:700;opacity:.85;direction:ltr}
+.gender.f h4{background:var(--fem)}
+.gender .items{padding:12px 10px;display:flex;flex-direction:column;gap:8px}
+.gitem{background:var(--male-bg);border-radius:12px;padding:7px 12px;text-align:center;
+  font-family:'Amiri',serif;font-size:clamp(1.12rem,4vw,1.38rem);font-weight:700}
+.gender.f .gitem{background:var(--fem-bg)}
+.gitem .mark{color:var(--fem);font-weight:900}
+.gitem .d{display:block;font-family:'Tajawal',sans-serif;font-size:.76rem;
+  font-weight:700;color:var(--ink-soft);direction:ltr}
+.gnote{font-size:.86rem;color:var(--ink-soft);text-align:center;padding:0 10px 12px;font-weight:700}
+
+.key{background:var(--fem-bg);border:3px solid var(--fem);border-radius:18px;
+  padding:18px;text-align:center}
+.key .big{font-family:'Amiri',serif;font-size:clamp(2rem,9vw,3rem);font-weight:700;color:var(--fem)}
+.key p{font-size:1.02rem;font-weight:700;margin-top:6px}
+.key .p-de{direction:ltr;font-size:.9rem;color:var(--teal-deep);font-weight:700}
+.key .exs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+.key .exs span{background:#fff;border-radius:10px;padding:5px 13px;
+  font-family:'Amiri',serif;font-size:1.2rem;font-weight:700}
+.key .exs b{color:var(--fem)}
+
+/* ===== الجسر الألماني ===== */
+.bridge{background:linear-gradient(180deg,#F1F8F8,#fff);border:3px solid var(--teal);
+  border-radius:18px;padding:18px 16px}
+.bridge h3{color:var(--teal-deep)}
+.bridge .lead{text-align:center;font-size:1rem;font-weight:700;margin-bottom:14px;line-height:1.85}
+.btab{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}
+.btab th{background:var(--teal);color:#fff;font-size:.86rem;font-weight:800;padding:8px 6px}
+.btab td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:center}
+.btab tr:last-child td{border-bottom:none}
+.btab .ar{font-family:'Amiri',serif;font-size:clamp(1rem,3.6vw,1.22rem);font-weight:700}
+.btab .de{direction:ltr;font-size:.92rem;font-weight:700;color:var(--ink-soft)}
+.btab .hi{color:var(--fem);font-weight:900}
+.btab .hi2{color:var(--teal-deep);font-weight:900}
+.bridge .punch{background:var(--teal);color:#fff;border-radius:14px;padding:12px 16px;
+  margin-top:14px;text-align:center;font-weight:800;font-size:1rem;line-height:1.8}
+.bridge .punch span{display:block;direction:ltr;font-size:.9rem;opacity:.92;font-weight:700}
+
+.warn{background:#FFF8E6;border:2px solid var(--gold-soft);border-right:8px solid var(--gold)}
+.warn ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:8px}
+.warn li{font-size:1rem;line-height:1.9}
+.warn li .de{display:block;direction:ltr;font-size:.86rem;color:var(--teal-deep);font-weight:700}
+.warn .m{color:var(--male);font-weight:800}
+.warn .f{color:var(--fem);font-weight:800}
+
+.tbl{width:100%;border-collapse:collapse;background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow)}
+.tbl th{background:var(--gold);color:#fff;font-family:'Tajawal',sans-serif;
+  font-size:.9rem;font-weight:800;padding:10px 8px}
+.tbl td{border-bottom:1px solid var(--line);padding:11px 9px;
+  font-family:'Amiri',serif;font-size:clamp(1rem,3.7vw,1.24rem);font-weight:700;line-height:1.85}
+.tbl tr:last-child td{border-bottom:none}
+.tbl .jm{text-align:center;white-space:nowrap}
+.tbl .hl{color:#3D7EBF} .tbl .hlf{color:var(--fem)}
+.mini{background:var(--sand);border:2px solid var(--line);border-radius:50%;width:29px;height:29px;
+  font-size:.8rem;cursor:pointer;display:inline-grid;place-items:center;vertical-align:middle;
+  margin-right:5px;transition:background .2s,transform .15s}
+.mini:hover{background:var(--gold-soft);transform:scale(1.1)}
+.mini.playing{background:var(--gold-soft);border-color:var(--gold);animation:ring 1s ease-in-out infinite}
+@keyframes ring{0%,100%{box-shadow:0 0 0 0 rgba(200,151,10,.5)}50%{box-shadow:0 0 0 10px rgba(200,151,10,0)}}
+
+/* ===== زر القاعدة العائم ===== */
+.fab{position:fixed;bottom:18px;left:18px;z-index:80;
+  background:var(--teal);color:#fff;border:none;border-radius:999px;
+  font-family:'Tajawal',sans-serif;font-size:.93rem;font-weight:800;
+  padding:11px 19px;cursor:pointer;box-shadow:0 6px 18px rgba(43,33,24,.22);
+  display:none;transition:transform .15s}
+.fab.show{display:block}
+.fab:hover{transform:translateY(-3px)}
+.sheet{position:fixed;inset:0;z-index:90;background:rgba(43,33,24,.45);
+  display:none;align-items:flex-end;justify-content:center}
+.sheet.open{display:flex;animation:fade .25s ease}
+.sheet .inner{background:var(--cream);width:100%;max-width:640px;
+  border-radius:24px 24px 0 0;padding:20px 18px 26px;max-height:84vh;overflow-y:auto}
+.sheet .grab{width:52px;height:5px;background:var(--line);border-radius:99px;margin:0 auto 14px}
+.sheet h3{font-family:'Amiri',serif;font-size:1.45rem;text-align:center;margin-bottom:12px}
+
+/* ===== التمارين ===== */
+.bar{height:11px;background:var(--sand);border-radius:99px;overflow:hidden;margin-bottom:6px}
+.bar i{display:block;height:100%;width:0;border-radius:99px;transition:width .4s ease;
+  background:linear-gradient(90deg,var(--teal),var(--gold))}
+.meta{display:flex;justify-content:space-between;font-size:.85rem;color:var(--ink-soft);
+  font-weight:700;margin-bottom:14px}
+.q-card{background:#fff;border:2px solid var(--line);border-radius:24px;
+  padding:26px 18px;text-align:center;box-shadow:var(--shadow)}
+.q-label{font-size:.9rem;color:var(--ink-soft);font-weight:700;margin-bottom:4px}
+.q-label .de{display:block;direction:ltr;font-size:.82rem;color:var(--teal-deep)}
+.q-word{font-family:'Amiri',serif;font-weight:700;color:var(--gold);
+  font-size:clamp(2.2rem,9.5vw,3.4rem);line-height:1.4;margin-top:10px}
+.de-sub{direction:ltr;font-size:1rem;font-weight:700;color:var(--ink-soft);margin-top:-2px}
+.emoji-big{font-size:clamp(3.4rem,16vw,5.4rem);line-height:1.25}
+.q-sent{font-family:'Amiri',serif;font-weight:700;
+  font-size:clamp(1.45rem,5.6vw,2.05rem);line-height:1.95;
+  direction:rtl;unicode-bidi:isolate}
+.q-sent bdi{unicode-bidi:isolate}
+.sent-box{background:var(--sand);border:2px solid var(--line);border-radius:16px;padding:16px 18px}
+.blank{display:inline-block;min-width:130px;border-bottom:4px dotted var(--gold);
+  margin:0 6px;color:var(--gold)}
+.fill{color:var(--green)}
+
+.two-row{display:flex;gap:14px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.big-btn{font-family:'Tajawal',sans-serif;font-size:1.1rem;font-weight:800;
+  border:3px solid var(--line);border-radius:20px;background:#fff;color:var(--ink);
+  padding:15px 24px;cursor:pointer;min-width:150px;
+  transition:transform .15s,border-color .2s,background .2s}
+.big-btn .e{display:block;font-size:1.75rem;line-height:1.2}
+.big-btn small{display:block;font-size:.76rem;font-weight:700;opacity:.7;direction:ltr}
+.big-btn.male{background:var(--male-bg);border-color:var(--male)}
+.big-btn.fem{background:var(--fem-bg);border-color:var(--fem)}
+.big-btn:hover:not(:disabled){transform:translateY(-3px)}
+.big-btn.correct{background:var(--green)!important;border-color:var(--green)!important;color:#fff;animation:pop .4s}
+.big-btn.wrong{opacity:.35;cursor:not-allowed;animation:shake .4s}
+
+.options{display:flex;flex-direction:column;gap:11px;margin-top:20px}
+.opt{font-family:'Amiri',serif;font-size:clamp(1.25rem,4.8vw,1.6rem);font-weight:700;
+  background:var(--cream);color:var(--ink);border:2px solid var(--line);
+  border-radius:16px;padding:14px 18px;cursor:pointer;text-align:center;
+  transition:transform .15s,border-color .2s,background .2s,opacity .3s}
+.opt:hover:not(:disabled){transform:translateY(-2px);border-color:var(--teal);background:#fff}
+.opt.correct{background:var(--green);color:#fff;border-color:var(--green);animation:pop .4s}
+.opt.wrong{background:#fff;color:#9a8f83;border-color:var(--line);opacity:.4;
+  cursor:not-allowed;animation:shake .4s}
+.opt:disabled{cursor:default}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.07)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+
+.feedback{min-height:56px;margin-top:18px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px}
+.fb-text{font-size:1.16rem;font-weight:800}
+.fb-text.ok{color:var(--green)} .fb-text.no{color:var(--red)}
+.fb-hint{font-size:.92rem;color:var(--ink-soft);font-weight:500}
+.proof{background:var(--sand);border-radius:14px;padding:11px 16px;
+  font-family:'Amiri',serif;font-size:1.1rem;font-weight:700;line-height:1.8;max-width:540px}
+.proof span{display:block;font-family:'Tajawal',sans-serif;font-size:.79rem;
+  font-weight:700;color:var(--ink-soft);margin-bottom:2px}
+.proof .de{display:block;direction:ltr;font-family:'Tajawal',sans-serif;font-size:.86rem;
+  font-weight:700;color:var(--teal-deep);margin-top:4px}
+
+/* ===== ورقة الطباعة ===== */
+.ws-head{background:var(--sand);border:2px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin-bottom:16px;text-align:center}
+.ws-head p{font-size:1rem;line-height:1.9}
+.ws-head .de{direction:ltr;font-size:.9rem;color:var(--teal-deep);font-weight:700;margin-top:4px}
+.ws-item{background:#fff;border:2px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;margin-bottom:14px;break-inside:avoid}
+.ws-item .w{font-family:'Amiri',serif;font-size:1.9rem;font-weight:700;color:var(--gold)}
+.ws-item .wd{direction:ltr;font-size:.92rem;font-weight:700;color:var(--ink-soft)}
+.ws-row{display:flex;align-items:flex-end;gap:10px;margin-top:12px}
+.ws-row label{font-family:'Tajawal',sans-serif;font-size:.95rem;font-weight:800;
+  color:var(--ink-soft);white-space:nowrap}
+.ws-line{flex:1;border-bottom:2px dotted #C9B98F;height:34px}
+.ws-hint{margin-top:10px;font-size:.88rem;color:var(--ink-soft);background:var(--sand);
+  border-radius:12px;padding:8px 13px}
+.ws-hint b{font-family:'Amiri',serif;font-size:1.1rem;color:var(--ink)}
+
+/* ===== الشرح الألماني ===== */
+.de-bar{display:flex;justify-content:center;margin:0 0 12px}
+.de-btn{font-family:'Tajawal',sans-serif;font-weight:700;font-size:.86rem;
+  background:#fff;border:2px solid var(--line);border-radius:999px;
+  padding:6px 18px;cursor:pointer;color:var(--ink-soft);transition:all .2s}
+.de-btn.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.de-panel{direction:ltr;text-align:left;font-size:.92rem;line-height:1.65;
+  background:#F1F8F8;border:2px solid #CFE7E5;border-left:6px solid var(--teal);
+  border-radius:14px;padding:12px 16px;margin-bottom:16px;color:#1F3F3D}
+.de-panel.hidden{display:none}
+.de-panel b{display:block;margin-bottom:4px;color:var(--teal-deep);font-weight:800}
+.de-block{direction:ltr;text-align:left;background:#F1F8F8;border:2px solid #CFE7E5;
+  border-left:6px solid var(--teal);border-radius:14px;padding:14px 16px;margin-top:16px;
+  font-size:.93rem;line-height:1.65;color:#1F3F3D}
+.de-block b{display:block;margin-bottom:4px;color:var(--teal-deep);font-weight:800}
+
+.btn{font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;border:none;
+  border-radius:999px;padding:12px 26px;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);border:2px solid var(--line)}
+.btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+
+.result{text-align:center;padding:20px 0}
+.result h2{font-family:'Amiri',serif;font-size:2.2rem;margin-bottom:6px}
+.stars{display:flex;gap:12px;justify-content:center;margin:22px 0}
+.star{font-size:3rem;opacity:.18;transform:scale(.5);transition:all .5s cubic-bezier(.2,1.4,.4,1)}
+.star.lit{opacity:1;transform:scale(1)}
+.score-line{font-size:1.08rem;font-weight:700;color:var(--ink-soft)}
+.res-de{direction:ltr;font-size:.93rem;font-weight:700;color:var(--teal-deep);margin-top:4px}
+.missed{margin:20px auto 0;max-width:540px;background:var(--sand);border-radius:var(--radius);
+  padding:14px 18px;text-align:right}
+.missed b{display:block;margin-bottom:6px;font-size:.89rem;color:var(--ink-soft)}
+.missed span{display:inline-block;font-family:'Amiri',serif;font-size:1.1rem;font-weight:700;
+  background:#fff;border:2px solid var(--line);border-radius:10px;padding:3px 12px;margin:4px 4px 0 0}
+
+.pbox{background:#fff;border:3px solid var(--gold-soft);border-radius:20px;
+  padding:16px 18px;margin-bottom:18px;box-shadow:var(--shadow)}
+.pbox .top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.pbox .badge{display:flex;align-items:center;gap:9px}
+.pbox .badge .e{font-size:2.1rem;line-height:1}
+.pbox .badge b{display:block;font-family:'Amiri',serif;font-size:1.32rem;font-weight:700}
+.pbox .badge span{display:block;direction:ltr;font-size:.78rem;font-weight:700;color:var(--ink-soft)}
+.pbox .score{text-align:center;background:var(--sand);border-radius:14px;padding:6px 16px}
+.pbox .score b{display:block;font-family:'Amiri',serif;font-size:1.65rem;font-weight:700;color:var(--gold);line-height:1.2}
+.pbox .score span{display:block;font-size:.76rem;font-weight:700;color:var(--ink-soft)}
+.pbar{height:13px;background:var(--sand);border-radius:99px;overflow:hidden;margin-top:12px;border:2px solid var(--line)}
+.pbar i{display:block;height:100%;width:0;border-radius:99px;transition:width .6s ease;
+  background:linear-gradient(90deg,var(--gold-soft),var(--gold))}
+.pnext{text-align:center;font-size:.86rem;font-weight:700;color:var(--ink-soft);margin-top:7px}
+.pnext .de{display:block;direction:ltr;font-size:.78rem;color:var(--teal-deep)}
+.badges-row{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.bchip{background:var(--sand);border:2px solid var(--line);border-radius:14px;
+  padding:7px 11px;text-align:center;opacity:.4;transition:all .3s;min-width:74px}
+.bchip.got{opacity:1;background:#FFF8E6;border-color:var(--gold)}
+.bchip .e{font-size:1.4rem;display:block;line-height:1.2}
+.bchip .n{font-family:'Amiri',serif;font-size:.95rem;font-weight:700}
+.bchip .p{font-size:.7rem;font-weight:700;color:var(--ink-soft)}
+.preset{background:none;border:none;color:var(--ink-soft);font-size:.76rem;
+  font-weight:700;cursor:pointer;text-decoration:underline;margin-top:10px;
+  display:block;margin-inline:auto;font-family:'Tajawal',sans-serif}
+.newbadge{background:linear-gradient(180deg,#FFF8E6,#fff);border:3px solid var(--gold);
+  border-radius:20px;padding:18px;margin:18px auto 0;max-width:420px;text-align:center;
+  animation:pop .6s}
+.newbadge .e{font-size:3.4rem;line-height:1.2}
+.newbadge b{display:block;font-family:'Amiri',serif;font-size:1.5rem;color:var(--gold)}
+.newbadge span{display:block;font-size:.9rem;font-weight:700;color:var(--ink-soft)}
+.newbadge .de{direction:ltr;font-size:.85rem;color:var(--teal-deep);font-weight:700}
+.pgain{font-family:'Amiri',serif;font-size:1.3rem;font-weight:700;color:var(--gold);margin-top:6px}
+
+/* ===== معجم الدرس وبطاقة الكلمة ===== */
+.dict{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:9px;margin-top:10px}
+.dchip{background:#fff;border:2px solid var(--line);border-radius:14px;padding:9px 6px;
+  cursor:pointer;text-align:center;transition:transform .15s,border-color .2s}
+.dchip:hover{transform:translateY(-3px);border-color:var(--gold)}
+.dchip .e{font-size:1.5rem;display:block;line-height:1.2}
+.dchip .w{font-family:'Amiri',serif;font-size:1.12rem;font-weight:700}
+.dchip.m .w{color:#3D7EBF} .dchip.f .w{color:var(--fem)}
+.tapw{background:none;border:none;cursor:pointer;font:inherit;color:inherit;
+  padding:1px 4px;border-radius:7px;border-bottom:2px dotted currentColor}
+.tapw:hover{background:rgba(200,151,10,.12)}
+.tapw:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+
+.wcard{text-align:center}
+.wcard .e{font-size:3.6rem;line-height:1.2}
+.wcard .pl{font-family:'Amiri',serif;font-size:2.2rem;font-weight:700;line-height:1.35}
+.wcard .pl.m{color:#3D7EBF} .wcard .pl.f{color:var(--fem)}
+.wcard .tag{display:inline-block;border-radius:999px;padding:3px 14px;font-size:.84rem;
+  font-weight:800;font-family:'Tajawal',sans-serif;margin-top:4px}
+.wcard .tag.m{background:var(--male-bg);color:#3D7EBF}
+.wcard .tag.f{background:var(--fem-bg);color:var(--fem)}
+.wcard .mean{background:var(--sand);border-radius:14px;padding:11px 15px;margin-top:12px;
+  font-size:1.05rem;font-weight:700;line-height:1.85}
+.wcard .arrow{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;
+  font-family:'Amiri',serif;font-size:1.32rem;font-weight:700;flex-wrap:wrap}
+.wcard .arrow .s{color:var(--ink-soft)}
+.wcard .arrow .a{color:var(--gold);font-size:1.5rem}
+.wcard .deline{direction:ltr;background:#F1F8F8;border:2px solid #CFE7E5;border-radius:14px;
+  padding:10px 14px;margin-top:10px;font-size:.98rem;font-weight:700;color:#1F3F3D}
+
+/* ===== اللعبة ===== */
+.glock{background:#fff;border:3px dashed var(--line);border-radius:20px;
+  padding:22px 18px;text-align:center;margin-top:6px}
+.glock .e{font-size:3rem;line-height:1.2;opacity:.45}
+.glock b{display:block;font-family:'Amiri',serif;font-size:1.4rem;margin-top:4px}
+.glock p{font-size:.95rem;font-weight:700;color:var(--ink-soft);margin-top:4px}
+.glock .de{direction:ltr;font-size:.84rem;color:var(--teal-deep);font-weight:700}
+
+.gwrap{background:linear-gradient(180deg,#EAF6F5,#FFF9EC);
+  border:3px solid var(--teal);border-radius:24px;position:relative;overflow:hidden;
+  user-select:none;padding:52px 12px 14px;min-height:min(62vh,430px);
+  display:flex;flex-direction:column}
+.gtop{position:absolute;top:0;left:0;right:0;z-index:5;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 14px;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);
+  font-family:'Tajawal',sans-serif;font-weight:800;font-size:.98rem}
+.gtop .hearts{letter-spacing:2px;font-size:1.15rem}
+
+.gstage{flex:1;display:flex;align-items:center;justify-content:center;position:relative}
+.gword{font-family:'Amiri',serif;font-weight:700;
+  font-size:clamp(2rem,9vw,3.1rem);background:#fff;border:4px solid var(--gold);
+  border-radius:20px;padding:12px 26px;box-shadow:0 6px 16px rgba(43,33,24,.16);
+  transition:transform .45s ease, opacity .45s ease}
+.gword.fly-m{transform:translateX(38%) translateY(90px) scale(.5);opacity:0}
+.gword.fly-f{transform:translateX(-38%) translateY(90px) scale(.5);opacity:0}
+.gword.shake{animation:shake .4s}
+
+.gtime{height:14px;background:var(--sand);border-radius:99px;overflow:hidden;
+  border:2px solid var(--line);margin:12px 0}
+.gtime i{display:block;height:100%;width:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--green),var(--gold));transition:width .1s linear}
+.gtime i.low{background:linear-gradient(90deg,var(--gold),var(--red))}
+
+.gdoors{display:flex;gap:12px}
+.gdoor{flex:1;border:4px solid var(--male);background:var(--male-bg);color:var(--male);
+  border-radius:20px;padding:15px 8px;cursor:pointer;
+  font-family:'Tajawal',sans-serif;font-weight:800;font-size:1.02rem;
+  transition:transform .12s,filter .12s}
+.gdoor.f{border-color:var(--fem);background:var(--fem-bg);color:var(--fem)}
+.gdoor .e{display:block;font-size:2rem;line-height:1.15}
+.gdoor small{display:block;font-size:.76rem;font-weight:700;opacity:.75;direction:ltr}
+.gdoor:hover{transform:translateY(-3px)}
+.gdoor:active{transform:translateY(0)}
+.gdoor:disabled{cursor:default}
+.gdoor.right{background:var(--green)!important;border-color:var(--green)!important;color:#fff;animation:pop .4s}
+.gdoor.blink{animation:blink .5s 2}
+@keyframes blink{50%{filter:brightness(1.35)}}
+
+.gpop{position:absolute;z-index:6;font-weight:800;font-family:'Tajawal',sans-serif;
+  font-size:1.15rem;animation:rise .9s ease-out forwards;pointer-events:none;
+  left:50%;transform:translateX(-50%)}
+@keyframes rise{to{transform:translateX(-50%) translateY(-54px);opacity:0}}
+.gover{position:absolute;inset:0;z-index:7;background:rgba(255,253,248,.96);
+  display:grid;place-items:center;text-align:center;padding:20px}
+.gover h3{font-family:'Amiri',serif;font-size:2rem}
+.ghint{text-align:center;font-size:.9rem;font-weight:700;color:var(--ink-soft);margin-top:12px}
+.ghint .de{display:block;direction:ltr;font-size:.82rem;color:var(--teal-deep)}
+
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}
+.conf{position:absolute;top:-8%;font-size:1.7rem;animation:fall linear forwards}
+.conf img{width:46px;height:46px;object-fit:contain;
+  filter:drop-shadow(0 3px 6px rgba(43,33,24,.25))}
+@keyframes fall{to{transform:translateY(115vh) rotate(540deg);opacity:.1}}
+
+@media (max-width:560px){
+  .screen{padding:18px 14px 96px}
+  .two{grid-template-columns:1fr}
+  .q-card{padding:20px 13px}
+  .logo{height:62px}
+  .big-btn{min-width:132px;padding:14px 18px}
+  .tbl td,.btab td{padding:8px 5px}
+}
+@media print{
+  .topbar,.btn-row,.fab,.sheet,#confetti,.noprint{display:none!important}
+  .screen{display:none!important}
+  .screen#sheet3{display:block!important;padding:0}
+  body{background:#fff}
+  .ws-item{box-shadow:none;border-color:#999}
+  .ws-line{border-bottom-color:#999}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .star{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <button class="navbtn active" id="nav-home" onclick="go('home')">🏠</button>
+  <button class="navbtn" id="nav-rules" onclick="go('rules')">📖 القواعد</button>
+  <button class="navbtn" id="nav-ex1" onclick="startEx1()">🔢 ١</button>
+  <button class="navbtn" id="nav-ex2" onclick="startEx2()">👦👧 ٢</button>
+  <button class="navbtn" id="nav-ex3" onclick="startEx3()">🔄 ٣</button>
+  <button class="navbtn" id="nav-ex4" onclick="startEx4()">✍️ ٤</button>
+  <button class="navbtn" id="nav-ex5" onclick="startEx5()">📋 ٥</button>
+  <button class="navbtn" id="nav-ex6" onclick="startEx6()">🖼️ ٦</button>
+  <button class="navbtn" id="nav-game" onclick="go('game')">🎯 اللُّعْبَة</button>
+  <button class="navbtn" id="nav-sheet3" onclick="go('sheet3')">🖨️ وَرَقَة</button>
+</nav>
+
+<!-- ===== الرئيسية ===== -->
+<section class="screen on" id="home">
+  <div class="logo-wrap">
+    <img class="logo" src="https://res.cloudinary.com/difo1j3ol/image/upload/v1778521078/%D8%A7%D9%84%D9%84%D9%88%D8%BA%D9%88_anabeh.png" alt="معهد الأمين">
+  </div>
+  <h1 class="title">الجَــمْــع</h1>
+  <p class="subtitle">أَكْثَرُ مِنَ اثْنَيْنِ أَوِ اثْنَتَيْنِ &nbsp;•&nbsp;
+    <span style="direction:ltr;display:inline-block">Der Plural</span></p>
+  <div class="title-rule"></div>
+
+  <div class="pbox" id="pbox"></div>
+
+  <div class="lesson-list">
+    <button class="lesson-card" onclick="go('rules')">
+      <span class="ic">📖</span>
+      <span class="tx"><b>القَواعِد</b><small>خَمْسَةُ أَقْسامٍ قَصيرَةٍ مَعَ جَدْوَلِ الأَمْثِلَة</small>
+        <em>Die Regeln – mit deutscher Brücke</em></span>
+    </button>
+    <button class="lesson-card" onclick="startEx1()">
+      <span class="ic">🔢</span>
+      <span class="tx"><b>١ — مُفْرَدٌ أَمْ جَمْع؟</b><small>ثَماني كَلِمات</small>
+        <em>Einzahl oder Mehrzahl?</em></span>
+    </button>
+    <button class="lesson-card" onclick="startEx2()">
+      <span class="ic">👦👧</span>
+      <span class="tx"><b>٢ — لِلذُّكورِ أَمْ لِلْإِناث؟</b><small>سِتَّةُ جُموع</small>
+        <em>Männlich oder weiblich?</em></span>
+    </button>
+    <button class="lesson-card" onclick="startEx3()">
+      <span class="ic">🔄</span>
+      <span class="tx"><b>٣ — حَوِّلْ إلى جَمْع</b><small>مِنَ المُفْرَدِ إلى الجَمْع</small>
+        <em>In den Plural setzen</em></span>
+    </button>
+    <button class="lesson-card" onclick="startEx4()">
+      <span class="ic">✍️</span>
+      <span class="tx"><b>٤ — أَكْمِلِ الجُمْلَة</b><small>اِنْتَبِهْ لِلْفِعْل!</small>
+        <em>Satz vervollständigen</em></span>
+    </button>
+    <button class="lesson-card" onclick="startEx5()">
+      <span class="ic">📋</span>
+      <span class="tx"><b>٥ — اِخْتَرِ الجَمْعَ المُناسِب</b><small>كَلِماتٌ جَديدَةٌ مِنَ الكِتاب</small>
+        <em>Den richtigen Plural wählen</em></span>
+    </button>
+    <button class="lesson-card" onclick="startEx6()">
+      <span class="ic">🖼️</span>
+      <span class="tx"><b>٦ — ماذا تَرى في الصُّورَة؟</b><small>اِخْتَرِ الكَلِمَةَ الدّالَّةَ عَلى الصُّورَة</small>
+        <em>Was siehst du auf dem Bild?</em></span>
+    </button>
+    <button class="lesson-card" onclick="go('game')" id="game-card">
+      <span class="ic">🎯</span>
+      <span class="tx"><b>لُعْبَةُ الشَّبَكَة</b><span id="game-sub"></span></span>
+    </button>
+    <button class="lesson-card" onclick="go('sheet3')">
+      <span class="ic">🖨️</span>
+      <span class="tx"><b>وَرَقَةُ الكِتابَة</b><small>اُكْتُبِ الجَمْعَ وضَعْهُ في جُمْلَة — عَلى الوَرَق</small>
+        <em>Arbeitsblatt zum Ausdrucken</em></span>
+    </button>
+  </div>
+</section>
+
+<!-- ===== القواعد ===== -->
+<section class="screen" id="rules">
+  <h2 class="title" style="font-size:clamp(1.7rem,6.5vw,2.3rem)">القَواعِد</h2>
+  <div class="title-rule"></div>
+
+  <div class="rule">
+    <h3>القِسْمُ ١ — ما هُوَ الجَمْع؟ · <span class="de">Was ist der Plural?</span></h3>
+    <p class="def">الجَمْعُ: ما دَلَّ عَلى أَكْثَرَ مِنَ اثْنَيْنِ أَوِ اثْنَتَيْنِ</p>
+    <p class="def-de">Plural = mehr als zwei (ab drei)</p>
+    <div class="scale">
+      <div class="step"><span class="e">👦</span><span class="n">واحِد</span><span class="d">Einzahl · 1</span></div>
+      <div class="step"><span class="e">👦👦</span><span class="n">اثْنان</span><span class="d">Zweizahl · 2</span></div>
+      <div class="step now"><span class="e">👦👦👦</span><span class="n">جَمْع</span><span class="d">Plural · 3+</span></div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <h3>القِسْمُ ٢ — الجَمْعُ نَوْعان · <span class="de">Zwei Arten</span></h3>
+    <div class="two">
+      <div class="gender">
+        <h4>👦 لِلْمُذَكَّر <span>männlich</span></h4>
+        <div class="items">
+          <div class="gitem">تَلاميذ<span class="d">Schüler</span></div>
+          <div class="gitem">مُعَلِّمون<span class="d">Lehrer</span></div>
+          <div class="gitem">أَصْدِقاء<span class="d">Freunde</span></div>
+        </div>
+        <p class="gnote">لا عَلامَةَ واحِدَةً ثابِتَة</p>
+      </div>
+      <div class="gender f">
+        <h4>👧 لِلْمُؤَنَّث <span>weiblich</span></h4>
+        <div class="items">
+          <div class="gitem">تِلْميذ<span class="mark">ات</span><span class="d">Schülerinnen</span></div>
+          <div class="gitem">مُعَلِّم<span class="mark">ات</span><span class="d">Lehrerinnen</span></div>
+          <div class="gitem">صَديق<span class="mark">ات</span><span class="d">Freundinnen</span></div>
+        </div>
+        <p class="gnote">يَنْتَهي غالِبًا بِـ «ات»</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule">
+    <h3>القِسْمُ ٣ — العَلامَةُ الَّتي تَدُلُّك · <span class="de">Das Erkennungszeichen</span></h3>
+    <div class="key">
+      <div class="big">ـــات</div>
+      <p>إِذا انْتَهَتِ الكَلِمَةُ بِـ «ات» فَهِيَ جَمْعٌ لِلْإِناث</p>
+      <p class="p-de">Endung <b style="display:inline">ات</b> → weiblicher Plural</p>
+      <div class="exs">
+        <span>تِلْميذ<b>ات</b></span><span>مُعَلِّم<b>ات</b></span><span>صَديق<b>ات</b></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule bridge">
+    <h3>القِسْمُ ٤ — الجِسْر 🌉 · <span class="de">Die Brücke zum Deutschen</span></h3>
+    <p class="lead">أَنْتَ تَعْرِفُ هٰذِهِ القاعِدَةَ مِنْ قَبْلُ — فَالأَلْمانِيَّةُ تَفْعَلُ الشَّيْءَ نَفْسَه!</p>
+    <table class="btab">
+      <thead><tr><th>عَرَبي</th><th>Deutsch</th></tr></thead>
+      <tbody>
+        <tr><td class="ar">مُعَلِّم ← مُعَلِّم<span class="hi2">ون</span></td>
+            <td class="de">Lehrer → Lehrer</td></tr>
+        <tr><td class="ar">مُعَلِّمة ← مُعَلِّم<span class="hi">ات</span></td>
+            <td class="de">Lehrerin → Lehrer<span class="hi">innen</span></td></tr>
+        <tr><td class="ar">صَديق ← أَصْدِقاء</td>
+            <td class="de">Freund → Freunde</td></tr>
+        <tr><td class="ar">صَديقة ← صَديق<span class="hi">ات</span></td>
+            <td class="de">Freundin → Freund<span class="hi">innen</span></td></tr>
+      </tbody>
+    </table>
+    <div class="punch">
+      كَما تُضيفُ الأَلْمانِيَّةُ «innen» لِلْإِناث، تُضيفُ العَرَبِيَّةُ «ات»
+      <span>Deutsch: -innen &nbsp;=&nbsp; Arabisch: ات</span>
+    </div>
+  </div>
+
+  <div class="rule warn">
+    <h3>القِسْمُ ٥ — انْتَبِهْ ⚠️ · <span class="de">Achtung</span></h3>
+    <ul>
+      <li>الفِعْلُ يَتَغَيَّرُ أَيْضًا:
+        <span class="m">ذَهَبَ</span> التَّلاميذُ &nbsp;/&nbsp; <span class="f">ذَهَبَتِ</span> التِّلْميذاتُ
+        <span class="de">Auch das Verb ändert sich: ذَهَبَ (männlich) / ذَهَبَتِ (weiblich).</span></li>
+      <li><span class="m">أَصْدِقاء</span> جَمْعٌ لِلذُّكورِ ولا تَنْتَهي بِـ«ون» — بَعْضُ الجُموعِ يَتَغَيَّرُ شَكْلُها تَمامًا
+        <span class="de">Manche Plurale ändern ihre ganze Form – die musst du auswendig lernen (wie Mann → Männer).</span></li>
+      <li>«ات» عَلامَةٌ <b>غالِبَةٌ</b> لا قاعِدَةٌ مُطْلَقَة:
+        <span class="f">نَجْمة</span> جَمْعُها <b>نُجوم</b> لا «نَجْمات»!
+        <span class="de">ات ist die häufigste, aber nicht die einzige Form: نَجْمة → نُجوم.</span></li>
+    </ul>
+  </div>
+
+  <h3 style="font-family:'Tajawal';font-size:1.05rem;font-weight:800;margin:24px 0 4px;text-align:center">
+    جَدْوَلُ الأَمْثِلَة</h3>
+  <p style="text-align:center;direction:ltr;font-size:.88rem;color:var(--teal-deep);font-weight:700;margin-bottom:10px">
+    Beispielsätze aus dem Buch</p>
+  <table class="tbl">
+    <thead><tr><th>الأَمْثِلَة</th><th>الجَمْع</th></tr></thead>
+    <tbody id="tbl-body"></tbody>
+  </table>
+
+  <h3 style="font-family:'Tajawal';font-size:1.05rem;font-weight:800;margin:24px 0 2px;text-align:center">
+    مُعْجَمُ الدَّرْس 📚</h3>
+  <p style="text-align:center;font-size:.88rem;color:var(--ink-soft);font-weight:700">
+    اِضْغَطْ عَلى أَيِّ كَلِمَةٍ لِتَرى مَعْناها وتَسْمَعَها
+    <span style="display:block;direction:ltr;font-size:.82rem;color:var(--teal-deep)">
+      Tippe ein Wort an – Bedeutung, Bild und Ton</span></p>
+  <div class="dict" id="dict"></div>
+
+  <div class="btn-row">
+    <button class="btn btn-gold" onclick="startEx1()">🔢 ابْدَأِ التَّمارين</button>
+    <button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button>
+  </div>
+</section>
+
+<!-- ===== ١ ===== -->
+<section class="screen" id="ex1">
+  <div class="bar"><i id="bar1"></i></div>
+  <div class="meta"><span id="m1-count"></span><span id="m1-score"></span></div>
+  <div class="de-bar"><button class="de-btn on" onclick="toggleDe()">🇩🇪 Deutsch</button></div>
+  <div class="de-panel" id="de-panel1"></div>
+  <div class="q-card">
+    <p class="q-label">هَلْ هٰذِهِ الكَلِمَةُ مُفْرَدٌ أَمْ جَمْع؟
+      <span class="de">Einzahl oder Mehrzahl?</span></p>
+    <p class="q-word" id="q1-word">—</p>
+    <p class="de-sub" id="q1-de">—</p>
+    <div id="sp1"></div>
+    <div class="two-row">
+      <button class="big-btn" id="b1-one" onclick="answer1('one')">
+        <span class="e">1️⃣</span>مُفْرَد<small>Einzahl</small></button>
+      <button class="big-btn" id="b1-many" onclick="answer1('many')">
+        <span class="e">👥</span>جَمْع<small>Mehrzahl</small></button>
+    </div>
+    <div class="feedback" id="fb1"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button></div>
+</section>
+
+<!-- ===== ٢ ===== -->
+<section class="screen" id="ex2">
+  <div class="bar"><i id="bar2"></i></div>
+  <div class="meta"><span id="m2-count"></span><span id="m2-score"></span></div>
+  <div class="de-bar"><button class="de-btn on" onclick="toggleDe()">🇩🇪 Deutsch</button></div>
+  <div class="de-panel" id="de-panel2"></div>
+  <div class="q-card">
+    <p class="q-label">هٰذا جَمْعٌ — لِمَنْ هُوَ؟
+      <span class="de">Ein Plural – männlich oder weiblich?</span></p>
+    <p class="q-word" id="q2-word">—</p>
+    <p class="de-sub" id="q2-de">—</p>
+    <div id="sp2"></div>
+    <div class="two-row">
+      <button class="big-btn male" id="b2-m" onclick="answer2('m')">
+        <span class="e">👦</span>لِلذُّكور<small>männlich</small></button>
+      <button class="big-btn fem" id="b2-f" onclick="answer2('f')">
+        <span class="e">👧</span>لِلْإِناث<small>weiblich</small></button>
+    </div>
+    <div class="feedback" id="fb2"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button></div>
+</section>
+
+<!-- ===== ٣ ===== -->
+<section class="screen" id="ex3">
+  <div class="bar"><i id="bar3"></i></div>
+  <div class="meta"><span id="m3-count"></span><span id="m3-score"></span></div>
+  <div class="de-bar"><button class="de-btn on" onclick="toggleDe()">🇩🇪 Deutsch</button></div>
+  <div class="de-panel" id="de-panel3"></div>
+  <div class="q-card">
+    <p class="q-label">ما جَمْعُ هٰذِهِ الكَلِمَة؟ <span class="de">Wie lautet der Plural?</span></p>
+    <p class="q-word" id="q3-word">—</p>
+    <p class="de-sub" id="q3-de">—</p>
+    <div id="sp3"></div>
+    <div class="options" id="opts3"></div>
+    <div class="feedback" id="fb3"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button></div>
+</section>
+
+<!-- ===== ٤ ===== -->
+<section class="screen" id="ex4">
+  <div class="bar"><i id="bar4"></i></div>
+  <div class="meta"><span id="m4-count"></span><span id="m4-score"></span></div>
+  <div class="de-bar"><button class="de-btn on" onclick="toggleDe()">🇩🇪 Deutsch</button></div>
+  <div class="de-panel" id="de-panel4"></div>
+  <div class="q-card">
+    <p class="q-label">اِخْتَرِ الجَمْعَ المُناسِبَ — اِنْتَبِهْ لِلْفِعْل!
+      <span class="de">Achte auf das Verb am Satzanfang!</span></p>
+    <div class="sent-box"><p class="q-sent" id="q4-sent">—</p></div>
+    <div id="sp4" style="margin-top:10px"></div>
+    <div class="options" id="opts4"></div>
+    <div class="feedback" id="fb4"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button></div>
+</section>
+
+<!-- ===== ٥ ===== -->
+<section class="screen" id="ex5">
+  <div class="bar"><i id="bar5"></i></div>
+  <div class="meta"><span id="m5-count"></span><span id="m5-score"></span></div>
+  <div class="de-bar"><button class="de-btn on" onclick="toggleDe()">🇩🇪 Deutsch</button></div>
+  <div class="de-panel" id="de-panel5"></div>
+  <div class="q-card">
+    <p class="q-label">اِخْتَرِ الجَمْعَ المُناسِبَ لِلْكَلِمَة
+      <span class="de">Wähle den passenden Plural</span></p>
+    <p class="q-word" id="q5-word">—</p>
+    <p class="de-sub" id="q5-de">—</p>
+    <div id="sp5"></div>
+    <div class="options" id="opts5"></div>
+    <div class="feedback" id="fb5"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button></div>
+</section>
+
+<!-- ===== ٦ ===== -->
+<section class="screen" id="ex6">
+  <div class="bar"><i id="bar6"></i></div>
+  <div class="meta"><span id="m6-count"></span><span id="m6-score"></span></div>
+  <div class="de-bar"><button class="de-btn on" onclick="toggleDe()">🇩🇪 Deutsch</button></div>
+  <div class="de-panel" id="de-panel6"></div>
+  <div class="q-card">
+    <p class="q-label">ماذا تَرى في الصُّورَة؟ <span class="de">Was siehst du auf dem Bild?</span></p>
+    <p class="emoji-big" id="q6-emoji">—</p>
+    <p class="de-sub" id="q6-de">—</p>
+    <div class="options" id="opts6"></div>
+    <div class="feedback" id="fb6"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button></div>
+</section>
+
+<!-- ===== ورقة الطباعة ===== -->
+<section class="screen" id="sheet3">
+  <h2 class="title" style="font-size:clamp(1.6rem,6vw,2.2rem)">وَرَقَةُ الكِتابَة</h2>
+  <p class="subtitle">اُكْتُبْ جَمْعَ كُلِّ ما يَلي وضَعْهُ في جُمْلَة</p>
+  <div class="title-rule"></div>
+
+  <div class="ws-head">
+    <p>اِطْبَعْ هٰذِهِ الوَرَقَةَ واكْتُبْ عَلَيْها بِخَطِّ يَدِك، ثُمَّ سَلِّمْها لِمُعَلِّمِك.</p>
+    <p class="de">Drucke dieses Blatt aus, schreibe von Hand und gib es deiner Lehrkraft.</p>
+  </div>
+
+  <div id="ws-items"></div>
+
+  <div class="btn-row noprint">
+    <button class="btn btn-gold" onclick="window.print()">🖨️ اطْبَعِ الوَرَقَة</button>
+    <button class="btn btn-ghost" onclick="go('home')">🏠 الرَّئيسِيَّة</button>
+  </div>
+</section>
+
+<!-- ===== اللعبة ===== -->
+<section class="screen" id="game">
+  <h2 class="title" style="font-size:clamp(1.6rem,6vw,2.2rem)">لُعْبَةُ الشَّبَكَة</h2>
+  <p class="subtitle">اِلْتَقِطْ كُلَّ جَمْعٍ في شَبَكَتِهِ الصَّحيحَة &nbsp;·&nbsp;
+    <span style="direction:ltr;display:inline-block">Fang die Plurale im richtigen Netz!</span></p>
+  <div class="title-rule"></div>
+
+  <div id="game-locked"></div>
+
+  <div id="game-area" style="display:none">
+    <div class="gwrap" id="gwrap">
+      <div class="gtop">
+        <span id="g-score">⭐ ٠</span>
+        <span class="hearts" id="g-hearts">❤️❤️❤️</span>
+      </div>
+
+      <div class="gstage"><div class="gword" id="g-word">—</div></div>
+
+      <div class="gtime"><i id="g-time"></i></div>
+
+      <div class="gdoors">
+        <button class="gdoor f" id="gd-f" onclick="gAnswer('f')">
+          <span class="e">👧</span>لِلْإِناث<small>weiblich</small></button>
+        <button class="gdoor" id="gd-m" onclick="gAnswer('m')">
+          <span class="e">👦</span>لِلذُّكور<small>männlich</small></button>
+      </div>
+    </div>
+    <p class="ghint">اِقْرَأِ الكَلِمَةَ واضْغَطِ البابَ الصَّحيحَ قَبْلَ نِهايَةِ الوَقْت
+      <span class="de">Lies das Wort und tippe die richtige Tür, bevor die Zeit abläuft</span></p>
+    <div class="btn-row">
+      <button class="btn btn-gold" id="g-start" onclick="gameStart()">▶️ ابْدَأ</button>
+      <button class="btn btn-ghost" onclick="gameStop();go('home')">🏠 الرَّئيسِيَّة</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== النتيجة ===== -->
+<section class="screen" id="result">
+  <div class="result">
+    <h2 id="res-title">أَحْسَنْت!</h2>
+    <p class="score-line" id="res-score"></p>
+    <div class="stars"><span class="star" id="s1">⭐</span><span class="star" id="s2">⭐</span><span class="star" id="s3">⭐</span></div>
+    <p class="score-line" id="res-msg"></p>
+    <p class="res-de" id="res-de"></p>
+    <div id="res-missed"></div>
+    <div class="btn-row" id="res-buttons"></div>
+  </div>
+</section>
+
+<button class="fab" id="fab" onclick="openSheet()">📖 القاعِدَة · Regel</button>
+<div class="sheet" id="sheet" onclick="closeSheet(event)">
+  <div class="inner" onclick="event.stopPropagation()">
+    <div class="grab"></div>
+    <h3>تَذْكيرٌ سَريع · Kurz erklärt</h3>
+    <div class="rule" style="margin-bottom:12px;padding:14px">
+      <p class="def" style="font-size:1.2rem;margin:0">الجَمْعُ: أَكْثَرُ مِنَ اثْنَيْنِ</p>
+      <p class="def-de">Plural = ab drei</p>
+    </div>
+    <div class="two">
+      <div class="gender">
+        <h4>👦 لِلْمُذَكَّر <span>männlich</span></h4>
+        <div class="items">
+          <div class="gitem">تَلاميذ</div><div class="gitem">مُعَلِّمون</div><div class="gitem">أَصْدِقاء</div>
+        </div>
+      </div>
+      <div class="gender f">
+        <h4>👧 لِلْمُؤَنَّث <span>weiblich</span></h4>
+        <div class="items">
+          <div class="gitem">تِلْميذ<span class="mark">ات</span></div>
+          <div class="gitem">مُعَلِّم<span class="mark">ات</span></div>
+          <div class="gitem">صَديق<span class="mark">ات</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="key" style="margin-top:12px;padding:14px">
+      <div class="big" style="font-size:1.9rem">ـــات = ـــinnen</div>
+      <p class="p-de">wie <b style="display:inline">Lehrerinnen</b> im Deutschen</p>
+    </div>
+    <div class="btn-row" style="margin-top:14px">
+      <button class="btn btn-teal" onclick="closeSheet()">تَمام ✓</button>
+      <button class="btn btn-ghost" onclick="closeSheet();go('rules')">📖 كُلُّ القَواعِد</button>
+    </div>
+  </div>
+</div>
+
+<div class="sheet" id="wsheet" onclick="closeWord(event)">
+  <div class="inner" onclick="event.stopPropagation()">
+    <div class="grab"></div>
+    <div id="wcard-body"></div>
+    <div class="btn-row" style="margin-top:16px">
+      <button class="btn btn-teal" onclick="closeWord()">تَمام ✓</button>
+    </div>
+  </div>
+</div>
+
+<div id="confetti"></div>
+
+<script>
+/* ====================================================================
+   التسجيلات — ضَعِ الرابِطَ أَمامَ المِفْتاحِ ويَظْهَرُ زِرُّ 🔊 تِلْقائِيًّا
+   p1..p12 = المُفْرَدُ مَعَ جَمْعِهِ في مِلَفٍّ واحِد
+   s1..s6  = جُمَلُ الجَدْوَل
+   ==================================================================== */
+const AUDIO = {
+  p1:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800695/%D8%AA%D9%84%D9%85%D9%8A%D8%B0..%D8%AA%D9%84%D8%A7%D9%85%D9%8A%D8%B0_tglei5.mp4',  /* تِلْميذ … تَلاميذ */
+  p2:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800695/%D8%AA%D9%84%D9%85%D9%8A%D8%B0%D8%A9..%D8%AA%D9%84%D9%85%D9%8A%D8%B0%D8%A7%D8%AA_clqbzo.mp4',  /* تِلْميذة … تِلْميذات */
+  p3:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800694/%D9%85%D8%B9%D9%84%D9%85..%D9%85%D8%B9%D9%84%D9%85%D9%88%D9%86_kh0wkl.mp4',  /* مُعَلِّم … مُعَلِّمون */
+  p4:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800694/%D9%85%D8%B9%D9%84%D9%85%D8%A9..%D9%85%D8%B9%D9%84%D9%85%D8%A7%D8%AA_kjmqti.mp4',  /* مُعَلِّمة … مُعَلِّمات */
+  p5:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800694/%D8%B5%D8%AF%D9%8A%D9%82..%D8%A3%D8%B5%D8%AF%D9%82%D8%A7%D8%A1%D9%8C_renddx.mp4',  /* صَديق … أَصْدِقاء */
+  p6:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800694/%D8%B5%D8%AF%D9%8A%D9%82%D8%A9..%D8%B5%D8%AF%D9%8A%D9%82%D8%A7%D8%AA_lgsohj.mp4',  /* صَديقة … صَديقات */
+  p7:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800694/%D8%B9%D8%A7%D9%85%D9%84..%D8%B9%D9%85%D8%A7%D9%84_ahovc8.mp4',  /* عامِل … عُمّال */
+  p8:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800694/%D8%B7%D8%A8%D9%8A%D8%A8..%D8%A3%D8%B7%D8%A8%D8%A7%D8%A1_gppzz2.mp4',  /* طَبيب … أَطِبّاء */
+  p9:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800693/%D8%B1%D8%AC%D9%84..%D8%B1%D8%AC%D8%A7%D9%84_caujxw.mp4',  /* رَجُل … رِجال */
+  p10:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800693/%D9%86%D9%85%D8%B1..%D9%86%D9%85%D9%88%D8%B1_v5ziy6.mp4', /* نَمِر … نُمور */
+  p11:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800693/%D8%B9%D8%A7%D9%84%D9%85..%D8%B9%D9%84%D9%85%D8%A7%D8%A1_ulnwgw.mp4', /* عالِم … عُلَماء */
+  p12:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789800693/%D9%86%D8%AC%D9%85%D8%A9..%D9%86%D8%AC%D9%88%D9%85_sj7unu.mp4', /* نَجْمة … نُجوم */
+  s1:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789801680/%D8%B0%D9%87%D8%A8_%D8%A7%D9%84%D8%AA%D9%84%D8%A7%D9%85%D9%8A%D8%B0_bwra5d.mp4',
+  s2:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789801680/%D8%B0%D9%87%D8%A8%D8%AA_%D8%A7%D9%84%D8%AA%D9%84%D9%85%D9%8A%D8%B0%D8%A7%D8%AA_tpcygk.mp4',
+  s3:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789801680/%D9%8A%D8%B4%D8%B1%D8%AD_%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%85%D9%88%D9%86_buo1zv.mp4',
+  s4:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789801679/%D8%AA%D8%B4%D8%B1%D8%AD_%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%85%D8%A7%D8%AA_gxoecz.mp4',
+  s5:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789801680/%D8%A7%D9%84%D8%B7%D9%84%D8%A7%D8%A8_%D8%A3%D8%B5%D8%AF%D9%82%D8%A7%D8%A1_tkbj56.mp4',
+  s6:'https://res.cloudinary.com/difo1j3ol/video/upload/v1789801608/%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%D8%A7%D8%AA_%D8%B5%D8%AF%D9%8A%D9%82%D8%A7%D8%AA_dqivas.mp4'
+};
+
+/* ==================== الكلمات ==================== */
+const PAIRS = [
+  { k:'p1',  s:'تِلْميذ',   p:'تَلاميذ',   g:'m', de:'Schüler',         deS:'der Schüler',       deP:'die Schüler' , em:'🧑‍🎓', mean:'أَوْلادٌ يَتَعَلَّمونَ في المَدْرَسَة'},
+  { k:'p2',  s:'تِلْميذة',  p:'تِلْميذات',  g:'f', de:'Schülerin',       deS:'die Schülerin',     deP:'die Schülerinnen' , em:'👩‍🎓', mean:'بَناتٌ يَتَعَلَّمْنَ في المَدْرَسَة'},
+  { k:'p3',  s:'مُعَلِّم',   p:'مُعَلِّمون',  g:'m', de:'Lehrer',          deS:'der Lehrer',        deP:'die Lehrer' , em:'👨‍🏫', mean:'رِجالٌ يُعَلِّمونَ التَّلاميذ'},
+  { k:'p4',  s:'مُعَلِّمة',  p:'مُعَلِّمات',  g:'f', de:'Lehrerin',        deS:'die Lehrerin',      deP:'die Lehrerinnen' , em:'👩‍🏫', mean:'نِساءٌ يُعَلِّمْنَ التِّلْميذات'},
+  { k:'p5',  s:'صَديق',     p:'أَصْدِقاء',  g:'m', de:'Freund',          deS:'der Freund',        deP:'die Freunde' , em:'🤝', mean:'أَشْخاصٌ نُحِبُّهُمْ ونَأْنَسُ بِهِم'},
+  { k:'p6',  s:'صَديقة',    p:'صَديقات',   g:'f', de:'Freundin',        deS:'die Freundin',      deP:'die Freundinnen' , em:'👭', mean:'فَتَياتٌ نُحِبُّهُنَّ ونَأْنَسُ بِهِنّ'},
+  { k:'p7',  s:'عامِل',     p:'عُمّال',     g:'m', de:'Arbeiter',        deS:'der Arbeiter',      deP:'die Arbeiter' , em:'👷', mean:'رِجالٌ يَعْمَلونَ بِأَيْديهِم'},
+  { k:'p8',  s:'طَبيب',     p:'أَطِبّاء',   g:'m', de:'Arzt',            deS:'der Arzt',          deP:'die Ärzte' , em:'🩺', mean:'مَنْ يُعالِجونَ المَرْضى'},
+  { k:'p9',  s:'رَجُل',     p:'رِجال',     g:'m', de:'Mann',            deS:'der Mann',          deP:'die Männer' , em:'👨‍👨‍👦', mean:'أَشْخاصٌ كِبارٌ مِنَ الذُّكور'},
+  { k:'p10', s:'نَمِر',      p:'نُمور',     g:'m', de:'Tiger',           deS:'der Tiger',         deP:'die Tiger' , em:'🐅', mean:'حَيَواناتٌ مُفْتَرِسَةٌ مُخَطَّطَة'},
+  { k:'p11', s:'عالِم',     p:'عُلَماء',   g:'m', de:'Wissenschaftler', deS:'der Wissenschaftler', deP:'die Wissenschaftler' , em:'🔬', mean:'مَنْ يَعْرِفونَ الكَثيرَ ويَبْحَثون'},
+  { k:'p12', s:'نَجْمة',     p:'نُجوم',     g:'f', de:'Stern',           deS:'der Stern',         deP:'die Sterne', em:'🌟', img:'https://res.cloudinary.com/difo1j3ol/image/upload/v1789809603/%D9%86%D8%AC%D9%88%D9%85_jpfg61.png', mean:'ما نَراهُ لامِعًا في السَّماءِ لَيْلًا' }
+];
+const P = k => PAIRS.find(x=>x.k===k);
+
+/* ==================== جدول الكتاب ==================== */
+const TABLE = [
+  { id:'s1', jm:'التَّلاميذُ',  f:false, html:'ذَهَبَ <span class="hl">التَّلاميذُ</span> إلى المَدْرَسَةِ صَباحًا.'},
+  { id:'s2', jm:'التِّلْميذاتُ', f:true,  html:'ذَهَبَتِ <span class="hlf">التِّلْميذاتُ</span> إلى المَدْرَسَةِ صَباحًا.' },
+  { id:'s3', jm:'المُعَلِّمونَ', f:false, html:'يَشْرَحُ <span class="hl">المُعَلِّمونَ</span> الدَّرْسَ.' },
+  { id:'s4', jm:'المُعَلِّماتُ', f:true,  html:'تَشْرَحُ <span class="hlf">المُعَلِّماتُ</span> الدَّرْسَ.' },
+  { id:'s5', jm:'أَصْدِقاءُ',   f:false, html:'الطُّلّابُ <span class="hl">أَصْدِقاءُ</span> المُعَلِّمِ.' },
+  { id:'s6', jm:'صَديقاتُ',    f:true,  html:'الطّالِباتُ <span class="hlf">صَديقاتُ</span> المُعَلِّمَةِ.' }
+];
+
+/* ==================== ١ مفرد أم جمع ==================== */
+const SP = [
+  { k:'p1', w:'تِلْميذ',    de:'der Schüler',       many:false, why:'تِلْميذٌ واحِدٌ فَقَط.', dew:'Nur eine Person.' },
+  { k:'p1', w:'تَلاميذ',    de:'die Schüler',       many:true,  why:'أَكْثَرُ مِنِ اثْنَيْنِ ← جَمْع.', dew:'Mehr als zwei → Plural.' },
+  { k:'p4', w:'مُعَلِّمة',   de:'die Lehrerin',      many:false, why:'مُعَلِّمَةٌ واحِدَةٌ فَقَط.', dew:'Nur eine Person.' },
+  { k:'p4', w:'مُعَلِّمات',  de:'die Lehrerinnen',   many:true,  why:'تَنْتَهي بِـ«ات» ← جَمْعٌ لِلْإِناث.', dew:'Endung ات → weiblicher Plural.' },
+  { k:'p5', w:'صَديق',      de:'der Freund',        many:false, why:'صَديقٌ واحِدٌ فَقَط.', dew:'Nur eine Person.' },
+  { k:'p5', w:'أَصْدِقاء',   de:'die Freunde',       many:true,  why:'جَمْعٌ لِلذُّكورِ وإِنْ لَمْ تَنْتَهِ بِـ«ون».', dew:'Männlicher Plural – ohne ون!' },
+  { k:'p2', w:'تِلْميذات',   de:'die Schülerinnen',  many:true,  why:'تَنْتَهي بِـ«ات» ← جَمْعٌ لِلْإِناث.', dew:'Endung ات → weiblicher Plural.' },
+  { k:'p3', w:'مُعَلِّم',     de:'der Lehrer',        many:false, why:'مُعَلِّمٌ واحِدٌ فَقَط.', dew:'Nur eine Person.' }
+];
+
+/* ==================== ٢ الجنس ==================== */
+const GEN = [
+  { k:'p1', w:'تَلاميذ',   de:'die Schüler',       g:'m', why:'جَمْعُ «تِلْميذ» ← لِلذُّكور.', dew:'Plural von تِلْميذ (Schüler).' },
+  { k:'p2', w:'تِلْميذات',  de:'die Schülerinnen',  g:'f', why:'تَنْتَهي بِـ«ات» ← لِلْإِناث.', dew:'Endung ات wie „-innen".' },
+  { k:'p3', w:'مُعَلِّمون',  de:'die Lehrer',        g:'m', why:'تَنْتَهي بِـ«ون» ← لِلذُّكور.', dew:'Endung ون → männlich.' },
+  { k:'p4', w:'مُعَلِّمات',  de:'die Lehrerinnen',   g:'f', why:'تَنْتَهي بِـ«ات» ← لِلْإِناث.', dew:'Endung ات wie „-innen".' },
+  { k:'p5', w:'أَصْدِقاء',  de:'die Freunde',       g:'m', why:'جَمْعُ «صَديق» ← لِلذُّكورِ، وهٰذِهِ نَحْفَظُها.', dew:'Unregelmäßig – auswendig lernen!' },
+  { k:'p6', w:'صَديقات',   de:'die Freundinnen',   g:'f', why:'تَنْتَهي بِـ«ات» ← لِلْإِناث.', dew:'Endung ات wie „-innen".' }
+];
+
+/* ==================== ٣ حوّل إلى جمع ==================== */
+const TOP = [
+  { k:'p1', o:['تَلاميذ','تِلْميذان','تِلْميذات'],   why:'«تِلْميذان» مُثَنّى (اثْنانِ فَقَط)، و«تِلْميذات» لِلْإِناث.', dew:'تِلْميذان = genau 2; تِلْميذات = weiblich.' },
+  { k:'p2', o:['تِلْميذات','تِلْميذَتان','تَلاميذ'],  why:'الكَلِمَةُ لِلْإِناثِ فَجَمْعُها بِـ«ات».', dew:'Weibliches Wort → Endung ات.' },
+  { k:'p3', o:['مُعَلِّمون','مُعَلِّمان','مُعَلِّمات'], why:'«مُعَلِّمان» مُثَنّى، و«مُعَلِّمات» لِلْإِناث.', dew:'مُعَلِّمان = genau 2; مُعَلِّمات = weiblich.' },
+  { k:'p4', o:['مُعَلِّمات','مُعَلِّمَتان','مُعَلِّمون'], why:'الكَلِمَةُ لِلْإِناثِ فَجَمْعُها بِـ«ات».', dew:'Weibliches Wort → Endung ات.' },
+  { k:'p5', o:['أَصْدِقاء','صَديقان','صَديقات'],     why:'جَمْعُ «صَديق» يَتَغَيَّرُ شَكْلُهُ تَمامًا ← أَصْدِقاء.', dew:'Unregelmäßig, wie Mann → Männer.' },
+  { k:'p6', o:['صَديقات','صَديقَتان','أَصْدِقاء'],    why:'الكَلِمَةُ لِلْإِناثِ فَجَمْعُها بِـ«ات».', dew:'Weibliches Wort → Endung ات.' }
+];
+
+/* ==================== ٤ أكمل الجملة ==================== */
+const FILL = [
+  { id:'s1', before:'ذَهَبَ', after:'إلى المَدْرَسَةِ صَباحًا.', c:'التَّلاميذُ',
+    o:['التَّلاميذُ','التِّلْميذاتُ','المُعَلِّماتُ'],
+    why:'الفِعْلُ «ذَهَبَ» لِلذُّكور، ولَوْ كانَ لِلْإِناثِ لَقُلْنا «ذَهَبَتِ».',
+    dew:'ذَهَبَ ohne ت → männlich.',
+    de:'„… gingen morgens zur Schule." Das Verb ذَهَبَ ist männlich!' },
+  { id:'s2', before:'ذَهَبَتِ', after:'إلى المَدْرَسَةِ صَباحًا.', c:'التِّلْميذاتُ',
+    o:['التِّلْميذاتُ','التَّلاميذُ','المُعَلِّمونَ'],
+    why:'الفِعْلُ «ذَهَبَتِ» بِالتّاءِ ← لِلْإِناث.',
+    dew:'ذَهَبَتِ mit ت → weiblich.',
+    de:'Das Verb ذَهَبَتِ endet auf ت – weiblich!' },
+  { id:'s3', before:'يَشْرَحُ', after:'الدَّرْسَ.', c:'المُعَلِّمونَ',
+    o:['المُعَلِّمونَ','المُعَلِّماتُ','المُعَلِّمَةُ'],
+    why:'الفِعْلُ «يَشْرَحُ» بِالياءِ ← لِلذُّكور.',
+    dew:'يَشْرَحُ mit ي → männlich.',
+    de:'Das Verb beginnt mit ي – männlich!' },
+  { id:'s4', before:'تَشْرَحُ', after:'الدَّرْسَ.', c:'المُعَلِّماتُ',
+    o:['المُعَلِّماتُ','المُعَلِّمونَ','التَّلاميذُ'],
+    why:'الفِعْلُ «تَشْرَحُ» بِالتّاءِ ← لِلْإِناث.',
+    dew:'تَشْرَحُ mit ت → weiblich.',
+    de:'Das Verb beginnt mit ت – weiblich!' },
+  { id:'s5', before:'الطُّلّابُ', after:'المُعَلِّمِ.', c:'أَصْدِقاءُ',
+    o:['أَصْدِقاءُ','صَديقاتُ','صَديقُ'],
+    why:'«الطُّلّابُ» ذُكورٌ، فَجَمْعُهُمْ أَصْدِقاء.',
+    dew:'الطُّلّاب sind männlich.',
+    de:'الطُّلّاب (die Schüler) sind männlich.' },
+  { id:'s6', before:'الطّالِباتُ', after:'المُعَلِّمَةِ.', c:'صَديقاتُ',
+    o:['صَديقاتُ','أَصْدِقاءُ','صَديقَةُ'],
+    why:'«الطّالِباتُ» إِناثٌ، فَجَمْعُهُنَّ صَديقات.',
+    dew:'الطّالِبات sind weiblich.',
+    de:'الطّالِبات (die Schülerinnen) sind weiblich.' }
+];
+
+/* ==================== ٥ اختر الجمع (من الكتاب) ==================== */
+const BOOK = [
+  { k:'p7',  o:['أَطِبّاء','عامِلات','عُمّال'],   why:'«عامِلات» لِلْإِناث، و«أَطِبّاء» جَمْعُ طَبيب.', dew:'عامِلات = weiblich; أَطِبّاء = Ärzte.' },
+  { k:'p8',  o:['أَطِبّاء','طَبيبات','مُمَرِّضات'], why:'«طَبيبات» لِلْإِناث، و«مُمَرِّضات» كَلِمَةٌ أُخْرى.', dew:'طَبيبات = Ärztinnen; مُمَرِّضات = Krankenschwestern.' },
+  { k:'p9',  o:['رَجُلان','رِجال','سَيِّدات'],    why:'«رَجُلان» مُثَنّى، و«سَيِّدات» لِلْإِناث.', dew:'رَجُلان = genau 2 Männer.' },
+  { k:'p10', o:['نَمِران','أَسَد','نُمور'],       why:'«نَمِران» مُثَنّى، و«أَسَد» حَيَوانٌ آخَر.', dew:'نَمِران = 2 Tiger; أَسَد = Löwe.' },
+  { k:'p11', o:['عُلوم','عِلْم','عُلَماء'],       why:'«عُلوم» جَمْعُ عِلْم لا عالِم — اِنْتَبِهْ لِلْفَرْق!', dew:'عُلوم = Wissenschaften, nicht Wissenschaftler!' },
+  { k:'p12', o:['نُجوم','نَجْمَتان','نَجْمات'],   why:'مَعَ أَنَّها مُؤَنَّثَةٌ فَجَمْعُها «نُجوم» لا «نَجْمات» — وهٰذا يُحْفَظ!', dew:'Obwohl weiblich: نُجوم, nicht نَجْمات! Auswendig lernen.' }
+];
+
+/* ==================== ٦ الصور ==================== */
+const PIC = [
+  { e:'🌴🌴🌴', c:'نَخَلات', o:['نَخَلات','نَخْلة','نَخْلَتان'], de:'die Palmen', why:'ثَلاثُ نَخَلاتٍ ← جَمْع.', dew:'Drei Palmen → Plural.' },
+  { e:'🚗🚗🚗', c:'سَيّارات', o:['سَيّارات','سَيّارة','سَيّارَتان'], de:'die Autos', why:'ثَلاثُ سَيّاراتٍ ← جَمْع.', dew:'Drei Autos → Plural.' },
+  { e:'🌹🌹🌹', c:'وُرود',   o:['وُرود','وَرْدة','وَرْدَتان'],   de:'die Rosen', why:'ثَلاثُ وَرَداتٍ ← جَمْعُها «وُرود».', dew:'Drei Rosen → وُرود.' }
+];
+
+/* ==================== ورقة الطباعة ==================== */
+const WS = [
+  { w:'فَراشَةٌ', de:'der Schmetterling', jm:'فَراشات', ex:'الفَراشاتُ تَطيرُ فَوْقَ الزُّهور.' },
+  { w:'فَلّاحٌ',  de:'der Bauer',         jm:'فَلّاحون', ex:'الفَلّاحونَ يَزْرَعونَ الأَرْضَ.' },
+  { w:'شَجَرَةٌ', de:'der Baum',          jm:'أَشْجار',  ex:'الأَشْجارُ تُعْطينا الظِّلَّ.' }
+];
+
+const PRAISE = ['Super!','Richtig!','Klasse!','Perfekt!','Bravo!','Genau!'];
+const ENCOURAGE = ['Fast! Versuch es nochmal!','Nicht ganz – du schaffst das! 💪',
+  'Guter Versuch! Denk nochmal nach.','Noch ein Versuch – du bist nah dran!'];
+const AR_NUM = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+const toAr = n => String(n).split('').map(d=>AR_NUM[+d]).join('');
+const pick = a => a[Math.floor(Math.random()*a.length)];
+function shuffle(a){
+  const b=a.slice();
+  for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; }
+  return b;
+}
+
+/* ==================== الصوت ==================== */
+const clips={};
+function clipFor(k){
+  const u=AUDIO[k]; if(!u) return null;
+  if(!clips[k]) clips[k]=Object.assign(new Audio(u),{preload:'none'});
+  return clips[k];
+}
+let playing=null;
+function play(k,btn){
+  const clip=clipFor(k);
+  if(playing){ playing.pause(); playing.currentTime=0; }
+  document.querySelectorAll('.playing').forEach(b=>b.classList.remove('playing'));
+  if(!clip) return;
+  clip.currentTime=0; playing=clip;
+  if(btn) btn.classList.add('playing');
+  const done=()=>{ if(btn) btn.classList.remove('playing'); };
+  clip.onended=done; clip.onerror=done;
+  const p=clip.play(); if(p&&p.catch) p.catch(done);
+}
+function spk(k,label='🔊 اِسْتَمِعْ · Hören'){
+  if(!k||!AUDIO[k]) return '';
+  return `<button class="btn btn-ghost" style="margin-top:10px;font-size:.88rem;padding:8px 18px"
+    onclick="play('${k}', this)">${label}</button>`;
+}
+function spkMini(k){
+  if(!k||!AUDIO[k]) return '';
+  return `<button class="mini" onclick="play('${k}', this)" aria-label="استمع">🔊</button>`;
+}
+
+/* ==================== نغمات ==================== */
+let ac=null;
+function audio(){
+  if(!ac) ac=new (window.AudioContext||window.webkitAudioContext)();
+  if(ac.state==='suspended') ac.resume();
+  return ac;
+}
+function tone(f,s,d,type='sine',v=.18){
+  const c=audio(),o=c.createOscillator(),g=c.createGain();
+  o.type=type;o.frequency.value=f;o.connect(g);g.connect(c.destination);
+  const t=c.currentTime+s;
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.02);
+  g.gain.exponentialRampToValueAtTime(.0001,t+d);
+  o.start(t);o.stop(t+d+.05);
+}
+function sndOk(){ [660,880,1174].forEach((f,i)=>tone(f,i*.09,.28,'triangle',.16)); }
+function sndNo(){ tone(300,0,.16,'sawtooth',.10); tone(200,.14,.24,'sawtooth',.10); }
+const CLAP_URL='https://res.cloudinary.com/difo1j3ol/video/upload/v1789808472/Clap_Sound_Effect_%D8%B5%D9%88%D8%AA_%D8%AA%D8%B5%D9%81%D9%8A%D9%82_hbauxc.mp3';
+let clapAudio=null;
+function applause(delay=0){
+  try{
+    if(!clapAudio){ clapAudio=new Audio(CLAP_URL); clapAudio.preload='auto'; }
+    setTimeout(()=>{
+      try{
+        clapAudio.currentTime=0; clapAudio.volume=.85;
+        const p=clapAudio.play();
+        if(p&&p.catch) p.catch(()=>{});
+      }catch(e){}
+    }, delay*1000);
+  }catch(e){}
+}
+function fanfare(){ [523,659,784,1046,1318].forEach((f,i)=>tone(f,i*.13,.5,'triangle',.15)); applause(.6); }
+const LOGO='https://res.cloudinary.com/difo1j3ol/image/upload/v1778521078/%D8%A7%D9%84%D9%84%D9%88%D8%BA%D9%88_anabeh.png';
+function confetti(n=22,emo=['🎉','⭐','✨','🌟','🎊'],logos=1){
+  const box=document.getElementById('confetti');
+  const drop=(el)=>{
+    el.className='conf';
+    el.style.right=Math.random()*100+'%';
+    el.style.animationDuration=(1.6+Math.random()*1.4)+'s';
+    el.style.animationDelay=(Math.random()*.4)+'s';
+    box.appendChild(el); setTimeout(()=>el.remove(),3600);
+  };
+  for(let i=0;i<n;i++){
+    const s=document.createElement('span'); s.textContent=pick(emo); drop(s);
+  }
+  for(let i=0;i<logos;i++){
+    const s=document.createElement('span');
+    const img=document.createElement('img'); img.src=LOGO; img.alt='';
+    s.appendChild(img); drop(s);
+  }
+}
+
+/* ==================== النِّقاطُ والشارات ==================== */
+const BADGES=[
+  {p:10,  e:'🌱', ar:'بُرْعُم',        de:'Anfänger'},
+  {p:25,  e:'⭐', ar:'نَجْم',          de:'Fortgeschritten'},
+  {p:50,  e:'🏅', ar:'مُتَمَيِّز',      de:'Profi'},
+  {p:100, e:'🏆', ar:'بَطَلُ الجَمْع',  de:'Plural-Meister'}
+];
+const PKEY='alamin-aljam3-points';
+function loadPts(){ try{ return parseInt(localStorage.getItem(PKEY))||0; }catch(e){ return 0; } }
+function savePts(v){ try{ localStorage.setItem(PKEY,v); }catch(e){} }
+let PTS=loadPts();
+function badgeOf(p){ let b=null; BADGES.forEach(x=>{ if(p>=x.p) b=x; }); return b; }
+function nextOf(p){ return BADGES.find(x=>p<x.p)||null; }
+function addPts(n){
+  const before=badgeOf(PTS);
+  PTS+=n; savePts(PTS);
+  const after=badgeOf(PTS);
+  drawPoints(); drawGameCard();
+  return (after && (!before || after.p!==before.p)) ? after : null;
+}
+function drawPoints(){
+  const box=document.getElementById('pbox'); if(!box) return;
+  const b=badgeOf(PTS), nx=nextOf(PTS);
+  const prev=b?b.p:0;
+  const pct=nx? Math.min(100,((PTS-prev)/(nx.p-prev))*100) : 100;
+  box.innerHTML=`
+    <div class="top">
+      <div class="badge">
+        <span class="e">${b?b.e:'🌰'}</span>
+        <span><b>${b?b.ar:'اِبْدَأِ الآن'}</b><span>${b?b.de:'Sammle Sterne!'}</span></span>
+      </div>
+      <div class="score"><b>${toAr(PTS)}</b><span>نَجْمَة · Sterne</span></div>
+    </div>
+    <div class="pbar"><i style="width:${pct}%"></i></div>
+    <p class="pnext">${ nx
+      ? `باقٍ ${toAr(nx.p-PTS)} نَجْمَةً لِلْوُصولِ إلى ${nx.e} ${nx.ar}`
+      : 'وَصَلْتَ إلى أَعْلى شارَة! 🏆' }
+      <span class="de">${ nx ? `Noch ${nx.p-PTS} Sterne bis „${nx.de}"` : 'Höchste Stufe erreicht!' }</span></p>
+    <div class="badges-row">
+      ${BADGES.map(x=>`<div class="bchip ${PTS>=x.p?'got':''}">
+        <span class="e">${x.e}</span><span class="n">${x.ar}</span><span class="p">${toAr(x.p)} ⭐</span>
+      </div>`).join('')}
+    </div>
+    <button class="preset" onclick="resetPts()">إعادةُ العَدّ · zurücksetzen</button>`;
+}
+function resetPts(){
+  if(!confirm('هَلْ تُريدُ إِعادَةَ عَدَدِ النُّجومِ إلى الصِّفْر؟')) return;
+  PTS=0; savePts(0); drawPoints();
+}
+
+/* ==================== التنقّل ==================== */
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.navbtn').forEach(b=>b.classList.remove('active'));
+  const m={home:'nav-home',rules:'nav-rules',ex1:'nav-ex1',ex2:'nav-ex2',ex3:'nav-ex3',
+    ex4:'nav-ex4',ex5:'nav-ex5',ex6:'nav-ex6',game:'nav-game',sheet3:'nav-sheet3'};
+  if(m[id]) document.getElementById(m[id]).classList.add('active');
+  document.getElementById('fab').classList.toggle('show', id.startsWith('ex'));
+  if(id!=='game') gameStop(); else drawGameScreen();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function openSheet(){ document.getElementById('sheet').classList.add('open'); }
+function closeSheet(e){
+  if(e&&e.target&&e.target.closest&&e.target.closest('.inner')&&e.target.tagName!=='BUTTON') return;
+  document.getElementById('sheet').classList.remove('open');
+}
+
+/* ==================== الألمانية: ظاهرة افتراضيًا ==================== */
+let deOn=true;
+function toggleDe(){
+  deOn=!deOn;
+  document.querySelectorAll('.de-btn').forEach(b=>b.classList.toggle('on',deOn));
+  document.querySelectorAll('.de-sub, .q-label .de').forEach(el=>el.style.display=deOn?'':'none');
+  refreshDe();
+}
+const deT={
+  1:()=>`<b>Übung 1 – Einzahl oder Mehrzahl?</b>
+    Frage ${i1+1} von ${q1.length}: Steht das Wort für eine Person/Sache oder für mehrere (ab drei)?`,
+  2:()=>`<b>Übung 2 – Männlich oder weiblich?</b>
+    Frage ${i2+1} von ${q2.length}: Das Wort ist ein Plural. Für Jungen/Männer oder Mädchen/Frauen?
+    <b style="display:inline">Tipp:</b> Endung ات → weiblich, genau wie „-innen".`,
+  3:()=>`<b>Übung 3 – In den Plural setzen</b>
+    Frage ${i3+1} von ${q3.length}: Vorsicht – eine Antwort ist die Zweizahl (genau 2),
+    eine andere hat das falsche Geschlecht.`,
+  4:()=>{ const f=q4[i4]; return f?`<b>Übung 4 – Satz vervollständigen</b>
+    Frage ${i4+1} von ${q4.length}: ${f.de}`:''; },
+  5:()=>`<b>Übung 5 – Den richtigen Plural wählen</b>
+    Frage ${i5+1} von ${q5.length}: Diese Wörter bilden den Plural <b style="display:inline">unregelmäßig</b> –
+    die ganze Wortform ändert sich, wie im Deutschen Mann → Männer.`,
+  6:()=>`<b>Übung 6 – Was siehst du auf dem Bild?</b>
+    Frage ${i6+1} von ${q6.length}: Du siehst drei Dinge – also brauchst du den Plural.`
+};
+function refreshDe(){
+  [1,2,3,4,5,6].forEach(n=>{
+    const p=document.getElementById('de-panel'+n);
+    if(!p) return;
+    p.innerHTML=deT[n]();
+    p.classList.toggle('hidden',!deOn);
+  });
+}
+
+/* ==================== بناء الجدول والورقة ==================== */
+/* رَبْطُ كُلِّ جَمْعٍ في الجَدْوَلِ بِمِفْتاحِهِ */
+const TKEY={'التَّلاميذُ':'p1','التِّلْميذاتُ':'p2','المُعَلِّمونَ':'p3',
+  'المُعَلِّماتُ':'p4','أَصْدِقاءُ':'p5','صَديقاتُ':'p6'};
+
+function buildTable(){
+  document.getElementById('tbl-body').innerHTML = TABLE.map(t=>{
+    const k=TKEY[t.jm];
+    const inner=t.html.replace(
+      /<span class="(hl|hlf)">([^<]+)<\/span>/,
+      (m,cls,txt)=>`<button class="tapw ${cls}" style="color:${cls==='hl'?'#3D7EBF':'var(--fem)'}"
+        onclick="showWord('${k}')">${txt}</button>`);
+    return `<tr><td>${spkMini(t.id)}${inner}</td>
+      <td class="jm"><button class="tapw" style="color:${t.f?'var(--fem)':'#3D7EBF'};font-weight:700"
+        onclick="showWord('${k}')">${t.jm}</button></td></tr>`;
+  }).join('');
+}
+
+function buildDict(){
+  document.getElementById('dict').innerHTML = PAIRS.map(x=>`
+    <button class="dchip ${x.g}" onclick="showWord('${x.k}')">
+      <span class="e">${x.img?`<img src="${x.img}" alt="" style="width:42px;height:42px;object-fit:contain;border-radius:8px">`:x.em}</span><span class="w">${x.p}</span>
+    </button>`).join('');
+}
+
+const wpic = x => x.img
+  ? `<img src="${x.img}" alt="${x.p}" style="max-width:190px;width:70%;height:auto;
+      border-radius:16px;box-shadow:0 4px 14px rgba(43,33,24,.16)">`
+  : x.em;
+
+function showWord(k){
+  const x=P(k); if(!x) return;
+  document.getElementById('wcard-body').innerHTML=`
+    <div class="wcard">
+      <div class="e">${wpic(x)}</div>
+      <div class="pl ${x.g}">${x.p}</div>
+      <span class="tag ${x.g}">${x.g==='m'?'👦 جَمْعٌ لِلذُّكور':'👧 جَمْعٌ لِلْإِناث'}</span>
+      <div class="mean">${x.mean}</div>
+      <div class="arrow"><span class="s">${x.s}</span><span class="a">←</span><span>${x.p}</span></div>
+      <div class="deline">${x.deS} → ${x.deP}</div>
+      ${AUDIO[k]?`<div class="btn-row" style="margin-top:12px">
+        <button class="btn btn-gold" onclick="play('${k}', this)">🔊 اِسْتَمِعْ · Hören</button>
+      </div>`:''}
+    </div>`;
+  document.getElementById('wsheet').classList.add('open');
+}
+function closeWord(e){
+  if(e&&e.target&&e.target.closest&&e.target.closest('.inner')&&e.target.tagName!=='BUTTON') return;
+  document.getElementById('wsheet').classList.remove('open');
+}
+function buildWS(){
+  document.getElementById('ws-items').innerHTML = WS.map((x,i)=>`
+    <div class="ws-item">
+      <div><span class="w">${toAr(i+1)}. ${x.w}</span>
+        <span class="wd">— ${x.de}</span></div>
+      <div class="ws-row"><label>جَمْعُها:</label><span class="ws-line"></span></div>
+      <div class="ws-row"><label>الجُمْلَة:</label><span class="ws-line"></span></div>
+      <div class="ws-hint">مِثال: <b>${x.jm}</b> — ${x.ex}</div>
+    </div>`).join('');
+}
+
+/* ==================== ١ ==================== */
+let q1=[],i1=0,sc1=0,lk1=false,miss1=[];
+function startEx1(){ q1=shuffle(SP); i1=0; sc1=0; miss1=[]; go('ex1'); render1(); }
+function render1(){
+  lk1=false;
+  const x=q1[i1];
+  document.getElementById('q1-word').textContent=x.w;
+  const d=document.getElementById('q1-de'); d.textContent=x.de; d.style.display=deOn?'':'none';
+  document.getElementById('sp1').innerHTML=spk(x.k);
+  document.getElementById('m1-count').textContent=`الكَلِمَة ${toAr(i1+1)} من ${toAr(q1.length)}`;
+  document.getElementById('m1-score').textContent=`النِّقاط: ${toAr(sc1)}`;
+  document.getElementById('bar1').style.width=(i1/q1.length*100)+'%';
+  document.getElementById('fb1').innerHTML='';
+  ['b1-one','b1-many'].forEach(id=>{
+    const b=document.getElementById(id); b.classList.remove('correct','wrong'); b.disabled=false; });
+  refreshDe();
+}
+function answer1(ch){
+  if(lk1) return; lk1=true;
+  const x=q1[i1], right=(ch==='many')===x.many;
+  const btn=document.getElementById(ch==='many'?'b1-many':'b1-one');
+  const oth=document.getElementById(ch==='many'?'b1-one':'b1-many');
+  document.querySelectorAll('#ex1 .big-btn').forEach(b=>b.disabled=true);
+  const proof=`<div class="proof"><span>لِماذا؟ · Warum?</span>${x.why}
+    <span class="de">${x.dew}</span></div>`;
+  if(right){
+    sc1++; btn.classList.add('correct'); sndOk(); confetti(16);
+    document.getElementById('m1-score').textContent=`النِّقاط: ${toAr(sc1)}`;
+    document.getElementById('fb1').innerHTML=`<span class="fb-text ok">${pick(PRAISE)} 🎉</span>${proof}`;
+    setTimeout(next1,2600);
+  }else{
+    miss1.push(x.w); btn.classList.add('wrong'); oth.classList.add('correct'); sndNo();
+    document.getElementById('fb1').innerHTML=`<span class="fb-text no">Nicht ganz! 👇</span>${proof}
+      <span class="btn-row" style="margin-top:4px">
+        <button class="btn btn-teal" onclick="openSheet()">📖 القاعِدَة</button>
+        <button class="btn btn-gold" onclick="next1()">التالي ←</button></span>`;
+  }
+}
+function next1(){ i1++; if(i1>=q1.length) finish(1); else render1(); }
+
+/* ==================== ٢ ==================== */
+let q2=[],i2=0,sc2=0,lk2=false,miss2=[];
+function startEx2(){ q2=shuffle(GEN); i2=0; sc2=0; miss2=[]; go('ex2'); render2(); }
+function render2(){
+  lk2=false;
+  const x=q2[i2];
+  document.getElementById('q2-word').textContent=x.w;
+  const d=document.getElementById('q2-de'); d.textContent=x.de; d.style.display=deOn?'':'none';
+  document.getElementById('sp2').innerHTML=spk(x.k);
+  document.getElementById('m2-count').textContent=`الكَلِمَة ${toAr(i2+1)} من ${toAr(q2.length)}`;
+  document.getElementById('m2-score').textContent=`النِّقاط: ${toAr(sc2)}`;
+  document.getElementById('bar2').style.width=(i2/q2.length*100)+'%';
+  document.getElementById('fb2').innerHTML='';
+  ['b2-m','b2-f'].forEach(id=>{
+    const b=document.getElementById(id); b.classList.remove('correct','wrong'); b.disabled=false; });
+  refreshDe();
+}
+function answer2(ch){
+  if(lk2) return; lk2=true;
+  const x=q2[i2];
+  const btn=document.getElementById(ch==='m'?'b2-m':'b2-f');
+  const oth=document.getElementById(ch==='m'?'b2-f':'b2-m');
+  document.querySelectorAll('#ex2 .big-btn').forEach(b=>b.disabled=true);
+  const proof=`<div class="proof"><span>لِماذا؟ · Warum?</span>${x.why}
+    <span class="de">${x.dew}</span></div>`;
+  if(ch===x.g){
+    sc2++; btn.classList.add('correct'); sndOk(); confetti(16);
+    document.getElementById('m2-score').textContent=`النِّقاط: ${toAr(sc2)}`;
+    document.getElementById('fb2').innerHTML=`<span class="fb-text ok">${pick(PRAISE)} 🎉</span>${proof}`;
+    setTimeout(next2,2600);
+  }else{
+    miss2.push(x.w); btn.classList.add('wrong'); oth.classList.add('correct'); sndNo();
+    document.getElementById('fb2').innerHTML=`<span class="fb-text no">Nicht ganz! 👇</span>${proof}
+      <span class="btn-row" style="margin-top:4px">
+        <button class="btn btn-teal" onclick="openSheet()">📖 القاعِدَة</button>
+        <button class="btn btn-gold" onclick="next2()">التالي ←</button></span>`;
+  }
+}
+function next2(){ i2++; if(i2>=q2.length) finish(2); else render2(); }
+
+/* ==================== ٣ ==================== */
+let q3=[],i3=0,sc3=0,tr3=0,lk3=false,miss3=[];
+function startEx3(){ q3=shuffle(TOP); i3=0; sc3=0; miss3=[]; go('ex3'); render3(); }
+function render3(){
+  lk3=false; tr3=0;
+  const x=q3[i3], pr=P(x.k);
+  document.getElementById('q3-word').textContent=pr.s;
+  const d=document.getElementById('q3-de'); d.textContent=pr.deS; d.style.display=deOn?'':'none';
+  document.getElementById('sp3').innerHTML='';
+  document.getElementById('m3-count').textContent=`الكَلِمَة ${toAr(i3+1)} من ${toAr(q3.length)}`;
+  document.getElementById('m3-score').textContent=`النِّقاط: ${toAr(sc3)}`;
+  document.getElementById('bar3').style.width=(i3/q3.length*100)+'%';
+  document.getElementById('fb3').innerHTML='';
+  const box=document.getElementById('opts3'); box.innerHTML='';
+  shuffle(x.o).forEach(o=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>answer3(b,o,x,pr); box.appendChild(b);
+  });
+  refreshDe();
+}
+function answer3(btn,opt,x,pr){
+  if(lk3) return;
+  const proof=`<div class="proof"><span>لِماذا؟ · Warum?</span>${x.why}
+    <span class="de">${x.dew}</span></div>`;
+  if(opt===pr.p){
+    lk3=true; btn.classList.add('correct');
+    document.querySelectorAll('#opts3 .opt').forEach(b=>b.disabled=true);
+    if(tr3===0) sc3++;
+    sndOk(); confetti(18);
+    document.getElementById('m3-score').textContent=`النِّقاط: ${toAr(sc3)}`;
+    document.getElementById('fb3').innerHTML=`<span class="fb-text ok">${pick(PRAISE)} 🎉</span>
+      <span class="fb-hint">${pr.s} ← ${pr.p} &nbsp;·&nbsp; ${pr.deS} → ${pr.deP}</span>`;
+    setTimeout(next3,2600); return;
+  }
+  tr3++; if(!miss3.includes(pr.s)) miss3.push(pr.s);
+  btn.classList.add('wrong'); btn.disabled=true; sndNo();
+  if(tr3>=2){
+    lk3=true;
+    document.querySelectorAll('#opts3 .opt').forEach(b=>{
+      b.disabled=true; if(b.textContent===pr.p) b.classList.add('correct'); });
+    document.getElementById('fb3').innerHTML=`<span class="fb-text no">هٰذا هُوَ الجَمْعُ الصَّحيح 👆</span>${proof}
+      <span class="btn-row" style="margin-top:4px">
+        <button class="btn btn-gold" onclick="next3()">التالي ←</button></span>`;
+  }else{
+    document.getElementById('fb3').innerHTML=`<span class="fb-text no">${pick(ENCOURAGE)}</span>
+      <span class="fb-hint">«ان» لِلِاثْنَيْنِ فَقَط · «ات» لِلْإِناث</span>`;
+  }
+}
+function next3(){ i3++; if(i3>=q3.length) finish(3); else render3(); }
+
+/* ==================== ٤ ==================== */
+let q4=[],i4=0,sc4=0,tr4=0,lk4=false,miss4=[];
+function startEx4(){ q4=shuffle(FILL); i4=0; sc4=0; miss4=[]; go('ex4'); render4(); }
+function render4(){
+  lk4=false; tr4=0;
+  const f=q4[i4];
+  document.getElementById('q4-sent').innerHTML=
+    `<bdi>${f.before}</bdi> <bdi class="blank" id="bl4">______</bdi> <bdi>${f.after}</bdi>`;
+  document.getElementById('sp4').innerHTML=spk(f.id,'🔊 اِسْتَمِعْ إلى الجُمْلَة');
+  document.getElementById('m4-count').textContent=`الجُمْلَة ${toAr(i4+1)} من ${toAr(q4.length)}`;
+  document.getElementById('m4-score').textContent=`النِّقاط: ${toAr(sc4)}`;
+  document.getElementById('bar4').style.width=(i4/q4.length*100)+'%';
+  document.getElementById('fb4').innerHTML='';
+  const box=document.getElementById('opts4'); box.innerHTML='';
+  shuffle(f.o).forEach(o=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>answer4(b,o,f); box.appendChild(b);
+  });
+  refreshDe();
+}
+function answer4(btn,opt,f){
+  if(lk4) return;
+  const proof=`<div class="proof"><span>لِماذا؟ · Warum?</span>${f.why}
+    <span class="de">${f.dew}</span></div>`;
+  if(opt===f.c){
+    lk4=true; btn.classList.add('correct');
+    document.querySelectorAll('#opts4 .opt').forEach(b=>b.disabled=true);
+    const bl=document.getElementById('bl4'); bl.textContent=f.c; bl.className='fill';
+    if(tr4===0) sc4++;
+    sndOk(); confetti(18);
+    document.getElementById('m4-score').textContent=`النِّقاط: ${toAr(sc4)}`;
+    document.getElementById('fb4').innerHTML=`<span class="fb-text ok">${pick(PRAISE)} 🎉</span>${proof}`;
+    if(AUDIO[f.id]) setTimeout(()=>play(f.id),700);
+    setTimeout(next4,3000); return;
+  }
+  tr4++; if(!miss4.includes(f.c)) miss4.push(f.c);
+  btn.classList.add('wrong'); btn.disabled=true; sndNo();
+  if(tr4>=2){
+    lk4=true;
+    document.querySelectorAll('#opts4 .opt').forEach(b=>{
+      b.disabled=true; if(b.textContent===f.c) b.classList.add('correct'); });
+    const bl=document.getElementById('bl4'); bl.textContent=f.c; bl.className='fill';
+    document.getElementById('fb4').innerHTML=`<span class="fb-text no">هٰذا هُوَ الصَّحيح 👆</span>${proof}
+      <span class="btn-row" style="margin-top:4px">
+        <button class="btn btn-gold" onclick="next4()">التالي ←</button></span>`;
+  }else{
+    document.getElementById('fb4').innerHTML=`<span class="fb-text no">${pick(ENCOURAGE)}</span>
+      <span class="fb-hint">اُنْظُرْ إلى الفِعْلِ أَوَّلًا · Schau zuerst auf das Verb</span>`;
+  }
+}
+function next4(){ i4++; if(i4>=q4.length) finish(4); else render4(); }
+
+/* ==================== ٥ ==================== */
+let q5=[],i5=0,sc5=0,tr5=0,lk5=false,miss5=[];
+function startEx5(){ q5=shuffle(BOOK); i5=0; sc5=0; miss5=[]; go('ex5'); render5(); }
+function render5(){
+  lk5=false; tr5=0;
+  const x=q5[i5], pr=P(x.k);
+  document.getElementById('q5-word').textContent=pr.s;
+  const d=document.getElementById('q5-de'); d.textContent=pr.deS; d.style.display=deOn?'':'none';
+  document.getElementById('sp5').innerHTML='';
+  document.getElementById('m5-count').textContent=`الكَلِمَة ${toAr(i5+1)} من ${toAr(q5.length)}`;
+  document.getElementById('m5-score').textContent=`النِّقاط: ${toAr(sc5)}`;
+  document.getElementById('bar5').style.width=(i5/q5.length*100)+'%';
+  document.getElementById('fb5').innerHTML='';
+  const box=document.getElementById('opts5'); box.innerHTML='';
+  shuffle(x.o).forEach(o=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>answer5(b,o,x,pr); box.appendChild(b);
+  });
+  refreshDe();
+}
+function answer5(btn,opt,x,pr){
+  if(lk5) return;
+  const proof=`<div class="proof"><span>لِماذا؟ · Warum?</span>${x.why}
+    <span class="de">${x.dew}</span></div>`;
+  if(opt===pr.p){
+    lk5=true; btn.classList.add('correct');
+    document.querySelectorAll('#opts5 .opt').forEach(b=>b.disabled=true);
+    if(tr5===0) sc5++;
+    sndOk(); confetti(18);
+    document.getElementById('m5-score').textContent=`النِّقاط: ${toAr(sc5)}`;
+    document.getElementById('fb5').innerHTML=`<span class="fb-text ok">${pick(PRAISE)} 🎉</span>
+      <span class="fb-hint">${pr.s} ← ${pr.p} &nbsp;·&nbsp; ${pr.deS} → ${pr.deP}</span>`;
+    setTimeout(next5,2600); return;
+  }
+  tr5++; if(!miss5.includes(pr.s)) miss5.push(pr.s);
+  btn.classList.add('wrong'); btn.disabled=true; sndNo();
+  if(tr5>=2){
+    lk5=true;
+    document.querySelectorAll('#opts5 .opt').forEach(b=>{
+      b.disabled=true; if(b.textContent===pr.p) b.classList.add('correct'); });
+    document.getElementById('fb5').innerHTML=`<span class="fb-text no">هٰذا هُوَ الجَمْعُ الصَّحيح 👆</span>${proof}
+      <span class="btn-row" style="margin-top:4px">
+        <button class="btn btn-gold" onclick="next5()">التالي ←</button></span>`;
+  }else{
+    document.getElementById('fb5').innerHTML=`<span class="fb-text no">${pick(ENCOURAGE)}</span>
+      <span class="fb-hint">هٰذِهِ جُموعٌ يَتَغَيَّرُ شَكْلُها · unregelmäßige Plurale</span>`;
+  }
+}
+function next5(){ i5++; if(i5>=q5.length) finish(5); else render5(); }
+
+/* ==================== ٦ ==================== */
+let q6=[],i6=0,sc6=0,tr6=0,lk6=false,miss6=[];
+function startEx6(){ q6=shuffle(PIC); i6=0; sc6=0; miss6=[]; go('ex6'); render6(); }
+function render6(){
+  lk6=false; tr6=0;
+  const x=q6[i6];
+  document.getElementById('q6-emoji').textContent=x.e;
+  const d=document.getElementById('q6-de'); d.textContent=x.de; d.style.display=deOn?'':'none';
+  document.getElementById('m6-count').textContent=`الصُّورَة ${toAr(i6+1)} من ${toAr(q6.length)}`;
+  document.getElementById('m6-score').textContent=`النِّقاط: ${toAr(sc6)}`;
+  document.getElementById('bar6').style.width=(i6/q6.length*100)+'%';
+  document.getElementById('fb6').innerHTML='';
+  const box=document.getElementById('opts6'); box.innerHTML='';
+  shuffle(x.o).forEach(o=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+    b.onclick=()=>answer6(b,o,x); box.appendChild(b);
+  });
+  refreshDe();
+}
+function answer6(btn,opt,x){
+  if(lk6) return;
+  const proof=`<div class="proof"><span>لِماذا؟ · Warum?</span>${x.why}
+    <span class="de">${x.dew}</span></div>`;
+  if(opt===x.c){
+    lk6=true; btn.classList.add('correct');
+    document.querySelectorAll('#opts6 .opt').forEach(b=>b.disabled=true);
+    if(tr6===0) sc6++;
+    sndOk(); confetti(18);
+    document.getElementById('m6-score').textContent=`النِّقاط: ${toAr(sc6)}`;
+    document.getElementById('fb6').innerHTML=`<span class="fb-text ok">${pick(PRAISE)} 🎉</span>${proof}`;
+    setTimeout(next6,2400); return;
+  }
+  tr6++; if(!miss6.includes(x.c)) miss6.push(x.c);
+  btn.classList.add('wrong'); btn.disabled=true; sndNo();
+  if(tr6>=2){
+    lk6=true;
+    document.querySelectorAll('#opts6 .opt').forEach(b=>{
+      b.disabled=true; if(b.textContent===x.c) b.classList.add('correct'); });
+    document.getElementById('fb6').innerHTML=`<span class="fb-text no">هٰذِهِ هِيَ الكَلِمَة 👆</span>${proof}
+      <span class="btn-row" style="margin-top:4px">
+        <button class="btn btn-gold" onclick="next6()">التالي ←</button></span>`;
+  }else{
+    document.getElementById('fb6').innerHTML=`<span class="fb-text no">${pick(ENCOURAGE)}</span>
+      <span class="fb-hint">عُدَّ ما تَراهُ في الصُّورَة · Zähle nach!</span>`;
+  }
+}
+function next6(){ i6++; if(i6>=q6.length) finish(6); else render6(); }
+
+
+/* ==================== اللُّعْبَة: اِقْرَأْ واخْتَرِ البابَ الصَّحيح ==================== */
+const UNLOCK = 10;          /* النُّجومُ اللازِمَةُ لِفَتْحِ اللُّعْبَة */
+const T_START = 5000;       /* الوَقْتُ الأَوَّليُّ لِكُلِّ كَلِمَة (٥ ثوانٍ) */
+const T_MIN   = 3000;       /* أَقْصَرُ وَقْتٍ (٣ ثوانٍ) */
+const T_STEP  = 150;        /* يَقْصُرُ تَدْريجِيًّا */
+
+const GWORDS = [
+  ...PAIRS.map(x=>({w:x.p, g:x.g})),
+  {w:'طَبيبات', g:'f'}, {w:'عامِلات', g:'f'}, {w:'سَيِّدات', g:'f'},
+  {w:'طُلّاب', g:'m'},  {w:'طالِبات', g:'f'}, {w:'أَوْلاد', g:'m'},
+  {w:'بَنات', g:'f'},   {w:'مُهَنْدِسون', g:'m'}, {w:'مُهَنْدِسات', g:'f'}
+];
+
+let gOn=false, gScore=0, gLives=3, gRound=0, gLimit=T_START;
+let gCur=null, gLock=false, gTick=null, gLeft=0, gLast=null;
+
+function drawGameCard(){
+  const sub=document.getElementById('game-sub'), card=document.getElementById('game-card');
+  if(!sub) return;
+  if(PTS>=UNLOCK){
+    card.style.opacity='1';
+    sub.innerHTML=`<small>اِقْرَأِ الجَمْعَ واخْتَرْ بابَهُ قَبْلَ نِهايَةِ الوَقْت</small>
+      <em>Wort-Spiel – freigeschaltet!</em>`;
+  }else{
+    card.style.opacity='.6';
+    sub.innerHTML=`<small>🔒 باقٍ ${toAr(UNLOCK-PTS)} نُجومٍ لِفَتْحِ اللُّعْبَة</small>
+      <em>Noch ${UNLOCK-PTS} Sterne bis zum Spiel</em>`;
+  }
+}
+function drawGameScreen(){
+  const lock=document.getElementById('game-locked'), area=document.getElementById('game-area');
+  if(!lock) return;
+  if(PTS>=UNLOCK){ lock.innerHTML=''; area.style.display=''; }
+  else{
+    area.style.display='none';
+    lock.innerHTML=`<div class="glock">
+      <div class="e">🔒</div><b>اللُّعْبَةُ مُقْفَلَة</b>
+      <p>اِجْمَعْ ${toAr(UNLOCK)} نُجومٍ مِنَ التَّمارينِ لِتَفْتَحَها — عِنْدَكَ الآنَ ${toAr(PTS)}</p>
+      <p class="de">Sammle ${UNLOCK} Sterne in den Übungen.</p>
+      <span class="btn-row"><button class="btn btn-gold" onclick="startEx1()">🔢 ابْدَأِ التَّمارين</button></span>
+    </div>`;
+  }
+}
+
+function gameStart(){
+  if(PTS<UNLOCK) return;
+  gameStop();
+  gOn=true; gScore=0; gLives=3; gRound=0; gLimit=T_START; gLast=null;
+  document.getElementById('g-start').textContent='🔄 مِنْ جَديد';
+  const w=document.getElementById('gwrap');
+  w.querySelectorAll('.gover,.gpop').forEach(e=>e.remove());
+  gHUD(); nextWord();
+}
+function gameStop(){
+  gOn=false;
+  if(gTick) clearInterval(gTick);
+  gTick=null;
+}
+function gHUD(){
+  document.getElementById('g-score').textContent='⭐ '+toAr(gScore);
+  document.getElementById('g-hearts').textContent='❤️'.repeat(Math.max(0,gLives))+'🖤'.repeat(Math.max(0,3-gLives));
+}
+function nextWord(){
+  if(!gOn) return;
+  gLock=false;
+  let item;
+  do{ item=pick(GWORDS); }while(GWORDS.length>1 && item.w===gLast);
+  gLast=item.w; gCur=item;
+
+  const el=document.getElementById('g-word');
+  el.className='gword'; el.textContent=item.w;
+  ['gd-m','gd-f'].forEach(id=>{
+    const b=document.getElementById(id);
+    b.classList.remove('right','blink'); b.disabled=false;
+  });
+
+  gLeft=gLimit;
+  const bar=document.getElementById('g-time');
+  bar.classList.remove('low'); bar.style.width='100%';
+  if(gTick) clearInterval(gTick);
+  gTick=setInterval(()=>{
+    gLeft-=100;
+    const pct=Math.max(0,gLeft/gLimit*100);
+    bar.style.width=pct+'%';
+    bar.classList.toggle('low', pct<35);
+    if(gLeft<=0){ clearInterval(gTick); gTick=null; timeUp(); }
+  },100);
+}
+function gAnswer(side){
+  if(!gOn||gLock||!gCur) return;
+  gLock=true;
+  if(gTick){ clearInterval(gTick); gTick=null; }
+  const el=document.getElementById('g-word');
+  document.querySelectorAll('.gdoor').forEach(b=>b.disabled=true);
+
+  if(side===gCur.g){
+    gScore++;
+    gRound++; gLimit=Math.max(T_MIN, T_START-gRound*T_STEP);
+    document.getElementById(side==='m'?'gd-m':'gd-f').classList.add('right');
+    el.classList.add(side==='m'?'fly-m':'fly-f');
+    tone(700,0,.12,'triangle',.13); tone(950,.08,.16,'triangle',.12);
+    gPop('+١ ⭐','var(--green)');
+    gHUD();
+    setTimeout(nextWord,700);
+  }else{
+    gLives--; sndNo();
+    el.classList.add('shake');
+    document.getElementById(gCur.g==='m'?'gd-m':'gd-f').classList.add('right','blink');
+    gPop(gCur.g==='f'?'👧 لِلْإِناث':'👦 لِلذُّكور','var(--red)');
+    gHUD();
+    if(gLives<=0) setTimeout(gameOver,1100); else setTimeout(nextWord,1400);
+  }
+}
+function timeUp(){
+  if(!gOn||gLock) return;
+  gLock=true; gLives--; sndNo();
+  document.getElementById('g-word').classList.add('shake');
+  document.querySelectorAll('.gdoor').forEach(b=>b.disabled=true);
+  document.getElementById(gCur.g==='m'?'gd-m':'gd-f').classList.add('right','blink');
+  gPop('⏰ اِنْتَهى الوَقْت','var(--red)');
+  gHUD();
+  if(gLives<=0) setTimeout(gameOver,1100); else setTimeout(nextWord,1500);
+}
+function gPop(txt,color){
+  const st=document.querySelector('.gstage');
+  const p=document.createElement('div');
+  p.className='gpop'; p.textContent=txt; p.style.color=color; p.style.top='6px';
+  st.appendChild(p); setTimeout(()=>p.remove(),950);
+}
+function gameOver(){
+  gameStop();
+  const bonus=Math.floor(gScore/3);
+  const nb=bonus>0?addPts(bonus):null;
+  if(gScore>=10){ fanfare(); confetti(40,['🎉','⭐','🌟','✨'],3); }
+  else if(gScore>0){ sndOk(); confetti(18,['⭐','✨'],1); }
+  const w=document.getElementById('gwrap');
+  const ov=document.createElement('div');
+  ov.className='gover';
+  ov.innerHTML=`<div>
+    <h3>${gScore>=10?'ما شاءَ الله! 🏆':gScore>=5?'أَحْسَنْت! 👏':'حاوِلْ مَرَّةً أُخْرى 💪'}</h3>
+    <p class="score-line">أَجَبْتَ عَنْ ${toAr(gScore)} كَلِمَةً صَحيحَة</p>
+    ${bonus>0?`<p class="pgain">+${toAr(bonus)} ⭐ أُضيفَتْ إلى رَصيدِك</p>`:''}
+    <p class="res-de" style="direction:ltr">${gScore} richtige Antworten</p>
+    ${nb?`<div class="newbadge" style="margin-top:12px"><div class="e">${nb.e}</div>
+      <b>شارَةٌ جَديدَة: ${nb.ar}</b><span class="de">Neues Abzeichen: „${nb.de}"</span></div>`:''}
+    <span class="btn-row">
+      <button class="btn btn-gold" onclick="gameStart()">🔄 مَرَّةً أُخْرى</button>
+      <button class="btn btn-ghost" onclick="gameStop();go('home')">🏠</button>
+    </span></div>`;
+  w.appendChild(ov);
+  if(nb) setTimeout(()=>{ fanfare(); confetti(50,['🎉','⭐','🌟',nb.e],5); },900);
+}
+document.addEventListener('keydown',e=>{
+  if(!gOn||gLock) return;
+  if(e.key==='ArrowLeft') gAnswer('f');
+  if(e.key==='ArrowRight') gAnswer('m');
+});
+
+/* ==================== النتيجة ==================== */
+function finish(w){
+  const S={1:[sc1,q1.length,miss1,'startEx1()','bar1'],
+           2:[sc2,q2.length,miss2,'startEx2()','bar2'],
+           3:[sc3,q3.length,miss3,'startEx3()','bar3'],
+           4:[sc4,q4.length,miss4,'startEx4()','bar4'],
+           5:[sc5,q5.length,miss5,'startEx5()','bar5'],
+           6:[sc6,q6.length,miss6,'startEx6()','bar6']}[w];
+  const [score,total,missed,again,bar]=S;
+  document.getElementById(bar).style.width='100%';
+  const pct=score/total, stars=pct===1?3:pct>=.6?2:1;
+  const newBadge = addPts(score);
+
+  document.getElementById('res-title').textContent=
+    stars===3?'ما شاءَ الله! 🏆':stars===2?'أَحْسَنْت! 👏':'بِدايَةٌ طَيِّبَة 🌱';
+  document.getElementById('res-score').textContent=`${toAr(score)} مِنْ ${toAr(total)} مِنَ المَرَّةِ الأولى`;
+  document.getElementById('res-msg').textContent=
+    stars===3?'أَتْقَنْتَ الجَمْع!':stars===2?'قَريبٌ جِدًّا مِنَ الإتْقان!':'راجِعِ القَواعِدَ ثُمَّ أَعِدِ المُحاوَلَة';
+  document.getElementById('res-de').textContent=
+    stars===3?'Perfekt! Du beherrschst den Plural.'
+    :stars===2?'Sehr gut – fast alles richtig!':'Schau dir die Regeln nochmal an!';
+
+  ['s1','s2','s3'].forEach((id,i)=>{
+    const el=document.getElementById(id); el.classList.remove('lit');
+    if(i<stars) setTimeout(()=>{ el.classList.add('lit'); tone(700+i*220,0,.35,'triangle',.15); },450+i*480);
+  });
+
+  const gain = `<p class="pgain">+${toAr(score)} ⭐ &nbsp;·&nbsp; مَجْموعُكَ الآن ${toAr(PTS)}</p>`;
+  const badgeBox = newBadge ? `
+    <div class="newbadge">
+      <div class="e">${newBadge.e}</div>
+      <b>شارَةٌ جَديدَة: ${newBadge.ar}</b>
+      <span>مَبْروك! جَمَعْتَ ${toAr(newBadge.p)} نَجْمَة</span>
+      <span class="de">Neues Abzeichen: „${newBadge.de}"</span>
+    </div>` : '';
+  document.getElementById('res-missed').innerHTML = gain + badgeBox + (missed.length?`
+    <div class="missed"><b>كَلِماتٌ تَحْتاجُ مُراجَعَة · nochmal üben:</b>
+      ${missed.map(t=>`<span>${t}</span>`).join('')}</div>`:'');
+
+  const labels={1:'🔢 ١',2:'👦👧 ٢',3:'🔄 ٣',4:'✍️ ٤',5:'📋 ٥',6:'🖼️ ٦'};
+  const fns={1:'startEx1()',2:'startEx2()',3:'startEx3()',4:'startEx4()',5:'startEx5()',6:'startEx6()'};
+  const nav=[1,2,3,4,5,6].filter(n=>n!==w)
+    .map(n=>`<button class="btn btn-ghost" onclick="${fns[n]}">${labels[n]}</button>`).join('');
+
+  document.getElementById('res-buttons').innerHTML=`
+    <button class="btn btn-gold" onclick="${again}">🔁 أَعِدِ التَّمْرين</button>
+    ${nav}
+    <button class="btn btn-teal" onclick="go('rules')">📖 القَواعِد</button>
+    <button class="btn btn-ghost" onclick="go('home')">🏠</button>`;
+
+  go('result');
+  setTimeout(()=>{
+    if(newBadge){
+      fanfare(); confetti(70,['🎉','⭐','🌟','✨','🎊','🥳','🏆',newBadge.e],6);
+      setTimeout(()=>{ fanfare(); confetti(40,['⭐','🌟','✨'],4); },1400);
+    }
+    else if(stars===3){ fanfare(); confetti(60,['🎉','⭐','🌟','✨','🎊','🥳','🏆'],4); }
+    else if(stars===2){ fanfare(); confetti(32,['🎉','⭐','✨','🌟','🎊'],2); }
+    else tone(523,0,.4,'triangle',.14);
+  },1900);
+}
+
+/* ==================== البدء ==================== */
+buildTable();
+buildDict();
+buildWS();
+drawPoints();
+drawGameCard();
+document.addEventListener('click',()=>{ try{ audio(); }catch(e){} },{once:true});
+</script>
+</body>
+</html>
